@@ -86,7 +86,7 @@ void hline(int xdeb, int xfin, int y, Uint8 color)
 		xfin = WIDTH-1;
 
 	/* on remplit la zone de mémoire contigue correspondant a la ligne */
-	memset(screen->pixels/* + (y * WIDTH) + xdeb*/, color, (xfin-xdeb));
+	memset((void *) ((size_t) (screen->pixels) + (y * WIDTH) + xdeb), color, (xfin - xdeb));
 }
 
 void fill_screen(Uint8 color)
