@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <SDL.h>
 #include "graphics.h"
+#include "SpaceShip.h"
 
 /**
  * fonction rafraichissant la fenetre infiniment, jusqu'a reception d'un signal
@@ -15,15 +16,15 @@ void affiche()
 	bool toucheAppuyeeLeft = false;
 	bool toucheAppuyeeRight = false;
 
-	int positionX = WIDTH / 2;
-	int positionY = HEIGHT / 2;
-
-	/* couleur noire pour le fond de la fenetre */
-	Uint8 fond = build_color(0x00, 0x00, 0x00);
-	Uint8 blanc = build_color(250, 250, 250);
-	Uint8 rouge = build_color(250, 0, 0);
+	SpaceShip* spaceShip = new SpaceShip();
+	
 	/* pour indiquer si on doit quitter */
 	display = 1;
+
+	//simple color definitions
+	Uint8 fond =  build_color(0x00, 0x00, 0x00);
+	Uint8 blanc = build_color(250, 250, 250);
+	Uint8 rouge = build_color(250, 0, 0);
 
 	while(display)
 	{
@@ -65,19 +66,19 @@ void affiche()
 						printf("appui sur une autre touche\n");
 				}
 			}
-		}		
+		}
 		
 		if(toucheAppuyeeUp) {
-			positionY += -10;
+			spaceShip->setPositionY(spaceShip->getPositionY() - 10);
 		}
 		if(toucheAppuyeeDown) {
-			positionY += +10;
+			spaceShip->setPositionY(spaceShip->getPositionY() + 10);
 		}
 		if(toucheAppuyeeLeft) {
-			positionX += -10;
+			spaceShip->setPositionX(spaceShip->getPositionX() - 10);
 		}
 		if(toucheAppuyeeRight) {
-			positionX += 10;
+			spaceShip->setPositionX(spaceShip->getPositionX() + 10);
 		}
 
 		/* on verrouille l'ecran */
@@ -87,10 +88,7 @@ void affiche()
 		fill_screen(fond);
 
 		/* on dessine un triangle*/
-		fill_triangle(positionX + 25 , positionY ,
-					  positionX - 25 , positionY ,
-					  positionX      , positionY - 100,
-						  blanc);	
+		spaceShip->display();
 
 		//fill_circle(10, 20, 50, random());
 
