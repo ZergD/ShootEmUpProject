@@ -21,8 +21,8 @@
 /**
  * taille de la fenetre
  */
-#define WIDTH  480
-#define HEIGHT 360
+#define WIDTH  920
+#define HEIGHT 640
 
 /**
  * taux de rafraichissement de la fenetre (images/sec.)

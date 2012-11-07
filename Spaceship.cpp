@@ -1,6 +1,7 @@
 #include <iostream>
 #include "SpaceShip.h"
 #include "graphics.h"
+
 using namespace std;
 
 SpaceShip::SpaceShip(int X, int Y) {
@@ -13,7 +14,6 @@ SpaceShip::SpaceShip(void){
 	positionX = WIDTH / 2;
 	positionY = HEIGHT / 2;
 }
-
 
 SpaceShip::~SpaceShip(void){
 }
