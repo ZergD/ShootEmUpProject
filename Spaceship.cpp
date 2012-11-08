@@ -19,8 +19,16 @@ SpaceShip::~SpaceShip(void){
 }
 
 void SpaceShip::move(int dx, int dy) {
-	positionX += dx;
-	positionX += dy;
+	if((positionX + dx + 25) < WIDTH || (positionX + dx - 25) > 0) {
+		positionX;
+	}
+	else if((positionY + dy) < HEIGHT || (positionY + dy - 100) > 0) {
+		positionY;
+	}
+	else {
+		positionX += dx;
+		positionX += dy;
+	}
 }
 
 void SpaceShip::display() {
@@ -39,11 +47,22 @@ int SpaceShip::getPositionY() {
 }
 
 void SpaceShip::setPositionX(int X) {
-	positionX = X;
-}
+	if((X + 25) > WIDTH || (X - 25) < 0) {
+		positionX;
+	}
+	else {
+		positionX = X;
+	}
+} 
 
 void SpaceShip::setPositionY(int Y) {
-	positionY = Y;
+	if(Y > HEIGHT || (Y - 100) < 0) {
+		positionY;
+	}
+	else {
+		positionY = Y;
+	}
+
 }
 
 

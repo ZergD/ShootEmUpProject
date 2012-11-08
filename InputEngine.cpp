@@ -100,7 +100,6 @@ void InputEngine::process() {
 					break;
 				case SDLK_SPACE :
 					printf("appui sur spaceBar\n");
-					event.type == SDL_KEYDOWN;
 
 				default :
 					printf("appui sur une autre touche\n");
