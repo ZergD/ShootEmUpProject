@@ -15,6 +15,12 @@ SpaceShip::SpaceShip(void){
 	positionY = HEIGHT / 2;
 }
 
+SpaceShip::SpaceShip(EngineManager* engineManagerP) {
+	engineManager = engineManagerP;
+	positionX = WIDTH / 2;
+	positionY = HEIGHT / 2;
+}
+
 SpaceShip::~SpaceShip(void){
 }
 
@@ -31,12 +37,20 @@ void SpaceShip::move(int dx, int dy) {
 	}
 }
 
+void SpaceShip::displaySingularShip () {
+	fill_triangle(positionX + 25 , positionY ,
+			      positionX - 25 , positionY ,
+				  positionX      , positionY - 100,
+				  build_color(250, 250, 250));
+}
+
 void SpaceShip::display() {
 	fill_triangle(positionX + 25 , positionY ,
 			      positionX - 25 , positionY ,
 				  positionX      , positionY - 100,
 				  build_color(250, 250, 250));
 }
+
 
 int SpaceShip::getPositionX() {
 	return positionX;

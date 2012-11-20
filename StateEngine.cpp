@@ -19,18 +19,19 @@ StateEngine::~StateEngine(void)
 }
 
 void StateEngine::process() {
+	int vitesse = 5;
 
 	if(engineManager->GetInputEngine()->GetToucheAppuyeeUp()) {
-		spaceShip->setPositionY(spaceShip->getPositionY() - 5);
+		spaceShip->setPositionY(spaceShip->getPositionY() - vitesse);
 	}
 	if(engineManager->GetInputEngine()->GetToucheAppuyeeDown()) {
-		spaceShip->setPositionY(spaceShip->getPositionY() + 5);
+		spaceShip->setPositionY(spaceShip->getPositionY() + vitesse);
 	}
 	if(engineManager->GetInputEngine()->GetToucheAppuyeeLeft()) {
-		spaceShip->setPositionX(spaceShip->getPositionX() - 5);
+		spaceShip->setPositionX(spaceShip->getPositionX() - vitesse);
 	}
 	if(engineManager->GetInputEngine()->GetToucheAppuyeeRight()) {
-		spaceShip->setPositionX(spaceShip->getPositionX() + 5);
+		spaceShip->setPositionX(spaceShip->getPositionX() + vitesse);
 	}
 }
 
