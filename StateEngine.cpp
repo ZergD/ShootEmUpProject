@@ -9,7 +9,6 @@ StateEngine::StateEngine(void)
 StateEngine::StateEngine(EngineManager* engineManagerP)
 {
 	engineManager = engineManagerP;
-	spaceShip = new SpaceShip();
 }
 
 

@@ -1,6 +1,8 @@
 #include <iostream>
 #include "SpaceShip.h"
 #include "graphics.h"
+#include "EngineManager.h"
+
 
 using namespace std;
 
@@ -19,6 +21,7 @@ SpaceShip::SpaceShip(EngineManager* engineManagerP) {
 	engineManager = engineManagerP;
 	positionX = WIDTH / 2;
 	positionY = HEIGHT / 2;
+	engineManager->GetGraphicEngine()->addObject(this);
 }
 
 SpaceShip::~SpaceShip(void){

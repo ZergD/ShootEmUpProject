@@ -20,6 +20,6 @@ public:
 	void process();
 	void display();
 
-	void addSpaceShip();
+	void addObject(DisplayObject*);
 };
 
