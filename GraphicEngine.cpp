@@ -40,5 +40,5 @@ void GraphicEngine::process() {
     unlock();
 
 	//on attend le temps necessaire pour atteindre le taux de rafraichissement souhaite
-		sync();
+	sync();
 }

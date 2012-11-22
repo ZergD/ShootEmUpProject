@@ -21,20 +21,21 @@ void StateEngine::process() {
 	int vitesse = 5;
 
 	if(engineManager->GetInputEngine()->GetToucheAppuyeeUp()) {
-		spaceShip->setPositionY(spaceShip->getPositionY() - vitesse);
+		engineManager->GetSpaceShip()->setPositionY(engineManager->GetSpaceShip()->getPositionY() - vitesse);
+		//spaceShip->setPositionY(spaceShip->getPositionY() - vitesse);
 	}
 	if(engineManager->GetInputEngine()->GetToucheAppuyeeDown()) {
-		spaceShip->setPositionY(spaceShip->getPositionY() + vitesse);
+		engineManager->GetSpaceShip()->setPositionY(engineManager->GetSpaceShip()->getPositionY() + vitesse);
+		//spaceShip->setPositionY(spaceShip->getPositionY() + vitesse);
 	}
 	if(engineManager->GetInputEngine()->GetToucheAppuyeeLeft()) {
-		spaceShip->setPositionX(spaceShip->getPositionX() - vitesse);
+		engineManager->GetSpaceShip()->setPositionX(engineManager->GetSpaceShip()->getPositionX() - vitesse);
+		//spaceShip->setPositionX(spaceShip->getPositionX() - vitesse);
 	}
 	if(engineManager->GetInputEngine()->GetToucheAppuyeeRight()) {
-		spaceShip->setPositionX(spaceShip->getPositionX() + vitesse);
+		engineManager->GetSpaceShip()->setPositionX(engineManager->GetSpaceShip()->getPositionX() + vitesse);
+		//spaceShip->setPositionX(spaceShip->getPositionX() + vitesse);
 	}
 }
 
-SpaceShip* StateEngine::GetSpaceShip() {
-	return spaceShip;
-}
 

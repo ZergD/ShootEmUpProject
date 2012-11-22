@@ -79,7 +79,6 @@ void SpaceShip::setPositionY(int Y) {
 	else {
 		positionY = Y;
 	}
-
 }
 
 

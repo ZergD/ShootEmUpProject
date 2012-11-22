@@ -1,4 +1,5 @@
 #include "EngineManager.h"
+#include "Spaceship.h"
 
 using namespace std;
 
@@ -10,6 +11,7 @@ EngineManager::EngineManager(void)
 	engineList.push_front(inputEngine);
 	engineList.push_back(stateEngine);
 	engineList.push_back(graphicEngine);
+	spaceShip = new SpaceShip(this);
 }
 
 EngineManager::~EngineManager(void)
@@ -39,4 +41,6 @@ GraphicEngine* EngineManager::GetGraphicEngine() {
 	return graphicEngine;
 }
 
-// faire une methode process avec le while (qui peu bien etre le start() )
+SpaceShip* EngineManager::GetSpaceShip() {
+	return spaceShip;
+}
