@@ -1,10 +1,11 @@
 #pragma once
 
 #include "DisplayObject.h"
+#include "ComputeObject.h"
 
 class EngineManager;
 
-class SpaceShip : public DisplayObject
+class SpaceShip : public DisplayObject, public ComputeObject
 {
 	int positionX, positionY;
 	EngineManager* engineManager;
@@ -21,6 +22,7 @@ public:
 	void move(int dx, int dy);
 	void displaySingularShip();
 	void display();
+	void compute();
 
 	int getPositionX();
 	int getPositionY();

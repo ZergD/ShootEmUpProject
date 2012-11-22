@@ -22,6 +22,7 @@ SpaceShip::SpaceShip(EngineManager* engineManagerP) {
 	positionX = WIDTH / 2;
 	positionY = HEIGHT / 2;
 	engineManager->GetGraphicEngine()->addObject(this);
+	engineManager->GetStateEngine()->addComputeObject(this);
 }
 
 SpaceShip::~SpaceShip(void){
@@ -52,6 +53,23 @@ void SpaceShip::display() {
 			      positionX - 25 , positionY ,
 				  positionX      , positionY - 100,
 				  build_color(250, 250, 250));
+}
+
+void SpaceShip::compute() {
+	int vitesse = 5;
+	/*
+	if(engineManager->GetInputEngine()->GetToucheAppuyeeUp()) {
+		positionY -= vitesse;
+	}
+	if(engineManager->GetInputEngine()->GetToucheAppuyeeDown()) {
+		positionY += vitesse;
+	}
+	if(engineManager->GetInputEngine()->GetToucheAppuyeeLeft()) {
+		positionX -= vitesse;
+	}
+	if(engineManager->GetInputEngine()->GetToucheAppuyeeRight()) {
+		positionX += vitesse;
+	}*/
 }
 
 
