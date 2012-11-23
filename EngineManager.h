@@ -11,7 +11,7 @@ using namespace std;
 class EngineManager
 {
 	InputEngine* inputEngine;
-	SpaceShip*spaceShip;
+	//SpaceShip*spaceShip;
 	StateEngine* stateEngine;
 	GraphicEngine* graphicEngine;
 	list<Engine*> engineList;

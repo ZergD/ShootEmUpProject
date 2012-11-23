@@ -1,8 +1,9 @@
 #pragma once
-#include "SpaceShip.h"
-#include "Engine.h"
 #include <list>
+
+#include "Engine.h"
 #include "ComputeObject.h"
+#include "SpaceShip.h"
 
 class EngineManager;
 
@@ -11,7 +12,7 @@ class StateEngine : public Engine
 {
 	SpaceShip* spaceShip;
 	EngineManager* engineManager;
-	list<ComputeObject*> computeObjectList;
+	std::list<ComputeObject*> computeObjectList;
 public:
 	StateEngine(void);
 	StateEngine(EngineManager*);

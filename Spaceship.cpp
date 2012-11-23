@@ -37,7 +37,7 @@ void SpaceShip::move(int dx, int dy) {
 	}
 	else {
 		positionX += dx;
-		positionX += dy;
+		positionY += dy;
 	}
 }
 
@@ -57,19 +57,19 @@ void SpaceShip::display() {
 
 void SpaceShip::compute() {
 	int vitesse = 5;
-	/*
+
 	if(engineManager->GetInputEngine()->GetToucheAppuyeeUp()) {
-		positionY -= vitesse;
+		this->setPositionY(-vitesse);
 	}
 	if(engineManager->GetInputEngine()->GetToucheAppuyeeDown()) {
-		positionY += vitesse;
+		this->setPositionY(vitesse);
 	}
 	if(engineManager->GetInputEngine()->GetToucheAppuyeeLeft()) {
-		positionX -= vitesse;
+		this->setPositionX(-vitesse);
 	}
 	if(engineManager->GetInputEngine()->GetToucheAppuyeeRight()) {
-		positionX += vitesse;
-	}*/
+		this->setPositionX(vitesse);
+	}
 }
 
 
@@ -81,21 +81,21 @@ int SpaceShip::getPositionY() {
 	return positionY;
 }
 
-void SpaceShip::setPositionX(int X) {
-	if((X + 25) > WIDTH || (X - 25) < 0) {
-		positionX;
+void SpaceShip::setPositionX(int vitesse) {
+	if((positionX + vitesse + 25) > WIDTH || (positionX + vitesse - 25) < 0) {
+	
 	}
 	else {
-		positionX = X;
+		positionX += vitesse;
 	}
 } 
 
-void SpaceShip::setPositionY(int Y) {
-	if(Y > HEIGHT || (Y - 100) < 0) {
-		positionY;
+void SpaceShip::setPositionY(int vitesse) {
+	if((positionY + vitesse > HEIGHT) || ((positionY - 100 + vitesse) < 0)) {
+		
 	}
 	else {
-		positionY = Y;
+		positionY += vitesse;
 	}
 }
 
