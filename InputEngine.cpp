@@ -11,6 +11,7 @@ InputEngine::InputEngine(void)
 	toucheAppuyeeDown = false;
 	toucheAppuyeeLeft = false;
 	toucheAppuyeeRight = false;
+	toucheAppuyeeSpaceBar = false;
 }
 
 InputEngine::InputEngine(EngineManager* engineManagerP)
@@ -20,6 +21,7 @@ InputEngine::InputEngine(EngineManager* engineManagerP)
 	toucheAppuyeeDown = false;
 	toucheAppuyeeLeft = false;
 	toucheAppuyeeRight = false;
+	toucheAppuyeeSpaceBar = false;
 	engineManager = engineManagerP;
 }
 
@@ -42,6 +44,10 @@ bool InputEngine::GetToucheAppuyeeLeft() {
 
 bool InputEngine::GetToucheAppuyeeRight() {
 	return toucheAppuyeeRight;
+}
+
+bool InputEngine::GetToucheAppuyeeSpaceBar() {
+	return toucheAppuyeeSpaceBar;
 }
 
 int InputEngine::GetDisplay() {
@@ -100,7 +106,7 @@ void InputEngine::process() {
 					break;
 				case SDLK_SPACE :
 					printf("appui sur spaceBar\n");
-
+					toucheAppuyeeSpaceBar = event.type == SDL_KEYDOWN;
 				default :
 					printf("appui sur une autre touche\n");
 			}

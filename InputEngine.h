@@ -14,6 +14,7 @@ class InputEngine : public Engine
 	bool toucheAppuyeeDown;
 	bool toucheAppuyeeLeft;
 	bool toucheAppuyeeRight;
+	bool toucheAppuyeeSpaceBar;
 	EngineManager* engineManager;
 public:
 	InputEngine(void);
@@ -24,6 +25,7 @@ public:
 	bool GetToucheAppuyeeDown();
 	bool GetToucheAppuyeeLeft();
 	bool GetToucheAppuyeeRight();
+	bool GetToucheAppuyeeSpaceBar();
 	int GetDisplay();
 
 	void process();

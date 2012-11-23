@@ -2,6 +2,7 @@
 #include "SpaceShip.h"
 #include "graphics.h"
 #include "EngineManager.h"
+#include "Shot.h"
 
 
 using namespace std;
@@ -69,6 +70,9 @@ void SpaceShip::compute() {
 	}
 	if(engineManager->GetInputEngine()->GetToucheAppuyeeRight()) {
 		this->setPositionX(vitesse);
+	}
+	if(engineManager->GetInputEngine()->GetToucheAppuyeeSpaceBar()) {
+		new Shot(engineManager, positionX, positionY);
 	}
 }
 
