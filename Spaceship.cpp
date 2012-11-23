@@ -72,7 +72,7 @@ void SpaceShip::compute() {
 		this->setPositionX(vitesse);
 	}
 	if(engineManager->GetInputEngine()->GetToucheAppuyeeSpaceBar()) {
-		new Shot(engineManager, positionX, positionY);
+		new Shot(engineManager, positionX, positionY - 100);
 	}
 }
 
