@@ -109,4 +109,6 @@ void draw_circle(int x, int y, int rayon, Uint8 color);
  */
 void fill_circle(int x, int y, int radius, Uint8 color);
 
+void display_image(SDL_Surface* image, int x, int y);
+
 

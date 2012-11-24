@@ -392,3 +392,12 @@ void sync()
 
 	next_time += 1000 / FRAMERATE;
 }
+
+void display_image(SDL_Surface* image, int x, int y) {
+	SDL_Rect position;
+
+    position.x = x;
+    position.y = y;
+	SDL_BlitSurface(image, NULL, screen, &position);
+	SDL_Flip(screen);
+}

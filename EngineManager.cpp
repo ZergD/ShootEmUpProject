@@ -1,3 +1,5 @@
+#include <windows.h>
+
 #include "EngineManager.h"
 #include "Spaceship.h"
 

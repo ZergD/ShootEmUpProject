@@ -11,8 +11,7 @@ class SpaceShip : public DisplayObject, public ComputeObject
 	EngineManager* engineManager;
 public:
 	//Constructeurs
-	SpaceShip(void);
-	SpaceShip(int X, int Y);
+	SpaceShip(EngineManager*, int X, int Y);
 	SpaceShip(EngineManager*);
 	
 	//Destructeur
