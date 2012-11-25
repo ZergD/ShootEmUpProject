@@ -21,5 +21,6 @@ public:
 	void display();
 	
 	void addComputeObject(ComputeObject*);
+	void removeComputeObject(ComputeObject*);
 };
 

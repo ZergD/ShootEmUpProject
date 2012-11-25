@@ -73,8 +73,10 @@ void Shot::setPositionX(int vitesse) {
 } 
 
 void Shot::setPositionY(int vitesse) {
-	if(positionY < 0 ||positionY > HEIGHT)  {
-		delete this;
+	if(positionY < 0 || positionY > HEIGHT)  {
+		engineManager->GetStateEngine()->removeComputeObject(this);
+		engineManager->GetGraphicEngine()->removeObject(this);
+		delete(this);
 	}
 	else {
 		positionY += vitesse;

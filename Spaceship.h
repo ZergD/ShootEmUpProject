@@ -2,6 +2,7 @@
 
 #include "DisplayObject.h"
 #include "ComputeObject.h"
+#include "time.h"
 
 class EngineManager;
 

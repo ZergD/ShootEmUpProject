@@ -22,10 +22,14 @@ void StateEngine::addComputeObject(ComputeObject* computeObject) {
 	computeObjectList.push_front(computeObject);
 }
 
+void StateEngine::removeComputeObject(ComputeObject* computeObject) {
+	computeObjectList.remove(computeObject);
+}
+
 void StateEngine::process() {
-	
-	for (list<ComputeObject*>::iterator it = computeObjectList.begin(); it != computeObjectList.end(); it++) {
-			(*it)->compute();
+	list<ComputeObject*>::iterator it = computeObjectList.begin();
+	while(it != computeObjectList.end()) {
+		(*it++)->compute();
 	}
 }
 

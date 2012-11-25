@@ -21,6 +21,10 @@ void GraphicEngine::addObject(DisplayObject* displayObject){
 	displayObjectList.push_front(displayObject);
 }
 
+void GraphicEngine::removeObject(DisplayObject* displayObject) {
+	displayObjectList.remove(displayObject);
+}
+
 void GraphicEngine::process() {	
 		
 	// on verrouille l'ecran /

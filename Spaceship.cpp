@@ -1,5 +1,4 @@
 #include <iostream>
-#include "time.h"
 #include "SpaceShip.h"
 #include "graphics.h"
 #include "EngineManager.h"
@@ -101,7 +100,7 @@ void SpaceShip::setPositionX(int vitesse) {
 
 void SpaceShip::setPositionY(int vitesse) {
 	if((positionY + vitesse + 45 > HEIGHT) || ((positionY + vitesse - 45) < 0)) {
-		
+	
 	}
 	else {
 		positionY += vitesse;

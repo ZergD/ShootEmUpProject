@@ -21,5 +21,6 @@ public:
 	void display();
 
 	void addObject(DisplayObject*);
+	void removeObject(DisplayObject*);
 };
 
