@@ -27,6 +27,7 @@ void EngineManager::start() {
 		for (list<Engine*>::iterator it = engineList.begin(); it != engineList.end(); it++) {
 			(*it)->process();
 		}
+		Sleep(10);
 	}
 }
 

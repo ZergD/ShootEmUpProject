@@ -6,7 +6,7 @@ class EngineManager;
 
 class Shot : public DisplayObject, public ComputeObject
 {
-	int positionX, positionY;
+	int positionX, positionY, longueur;
 	EngineManager* engineManager;
 public:
 	//Constructeurs

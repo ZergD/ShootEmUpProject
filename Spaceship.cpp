@@ -1,4 +1,5 @@
 #include <iostream>
+#include "time.h"
 #include "SpaceShip.h"
 #include "graphics.h"
 #include "EngineManager.h"
@@ -13,6 +14,7 @@ SpaceShip::SpaceShip(EngineManager* engineManagerP, int X, int Y) : engineManage
 }
 
 SpaceShip::SpaceShip(EngineManager* engineManagerP) : engineManager(engineManagerP) {
+	start = NULL;
 	positionX = WIDTH / 2;
 	positionY = HEIGHT / 2;
 	if (image == NULL) {
@@ -64,11 +66,21 @@ void SpaceShip::compute() {
 	if(engineManager->GetInputEngine()->GetToucheAppuyeeRight()) {
 		this->setPositionX(vitesse);
 	}
-	if(engineManager->GetInputEngine()->GetToucheAppuyeeSpaceBar()) {
+	if(engineManager->GetInputEngine()->GetToucheAppuyeeSpaceBar() && youCanShoot()) {
 		new Shot(engineManager, positionX, positionY - 50);
+		time(&start);
 	}
 }
 
+
+bool SpaceShip::youCanShoot() {
+	double timeDifference = 0.00;
+	time_t end = NULL;
+	time(&end);
+	timeDifference = difftime(end, start);
+	cout << "timeDifference = " << timeDifference << " s" << endl;
+	return (timeDifference >= 1.00);
+}
 
 int SpaceShip::getPositionX() {
 	return positionX;

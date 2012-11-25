@@ -18,6 +18,7 @@ Shot::Shot(void){
 }
 
 Shot::Shot(EngineManager* engineManagerP, int X, int Y) {
+	longueur = -25;
 	engineManager = engineManagerP;
 	positionX = X;
 	positionY = Y;
@@ -42,11 +43,13 @@ void Shot::move(int dx, int dy) {
 }
 
 void Shot::display() {
-	draw_line(positionX,positionY, positionX, positionY + 10, build_color(250, 250, 250));
+	draw_line(positionX,positionY, positionX, positionY + longueur, build_color(250, 250, 250));
+	draw_line(positionX + 1,positionY, positionX + 1, positionY + longueur, build_color(250, 250, 250));
+	draw_line(positionX - 1,positionY, positionX - 1, positionY + longueur, build_color(250, 250, 250));
 }
 
 void Shot::compute() {
-	int vitesse = 3;
+	int vitesse = 10;
 
 	this->setPositionY(-vitesse);
 }
@@ -70,8 +73,8 @@ void Shot::setPositionX(int vitesse) {
 } 
 
 void Shot::setPositionY(int vitesse) {
-	if((positionY + vitesse > HEIGHT) || ((positionY - 100 + vitesse) < 0)) {
-		
+	if(positionY < 0 ||positionY > HEIGHT)  {
+		delete this;
 	}
 	else {
 		positionY += vitesse;
