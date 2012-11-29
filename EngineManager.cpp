@@ -11,6 +11,7 @@ EngineManager::EngineManager(void) {
 	engineList.push_front(inputEngine);
 	engineList.push_back(stateEngine);
 	engineList.push_back(graphicEngine);
+	engineList.push_back(particleEngine);
 	new SpaceShip(this);
 }
 

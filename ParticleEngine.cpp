@@ -23,9 +23,11 @@ void ParticleEngine::launch() {
 	Star* star2 = new Star(engineManager);
 	Star* star3 = new Star(engineManager);
 	Star* star4 = new Star(engineManager);
-/*	for(i = 0; i < starNumber; i++) {
+	/*for(i = 0; i < starNumber; i++) {
 		new Star(engineManager);
 	}*/
-	
+}
+
+void ParticleEngine::process() {
 }
 

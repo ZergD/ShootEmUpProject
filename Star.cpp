@@ -88,7 +88,7 @@ void Star::setPositionX(int vitesse) {
 } 
 
 void Star::setPositionY(int vitesse) {
-	if(positionY > HEIGHT)  {
+	if(positionY < 0 || positionY > HEIGHT)  {
 		delete(this);
 	}
 	else {

@@ -17,7 +17,7 @@ class EngineManager {
 	ParticleEngine* particleEngine;
 
 	std::list<Engine*> engineList;
-	
+
 public:
 
 	EngineManager(void);
