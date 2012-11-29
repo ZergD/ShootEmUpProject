@@ -15,6 +15,7 @@ GraphicEngine::GraphicEngine(EngineManager* EngineManagerP) {
 
 GraphicEngine::~GraphicEngine(void)
 {
+
 }
 
 void GraphicEngine::addObject(DisplayObject* displayObject){
