@@ -7,7 +7,6 @@
 
 class EngineManager;
 
-
 class StateEngine : public Engine
 {
 	SpaceShip* spaceShip;
@@ -18,7 +17,6 @@ public:
 	StateEngine(EngineManager*);
 	~StateEngine(void);
 	void process();
-	void display();
 	
 	void addComputeObject(ComputeObject*);
 	void removeComputeObject(ComputeObject*);

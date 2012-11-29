@@ -5,6 +5,7 @@
 #include "InputEngine.h"
 #include <iostream>
 #include "GraphicEngine.h"
+#include "ParticleEngine.h"
 
 using namespace std;
 
@@ -14,6 +15,7 @@ class EngineManager
 	//SpaceShip*spaceShip;
 	StateEngine* stateEngine;
 	GraphicEngine* graphicEngine;
+	ParticleEngine* particleEngine;
 	list<Engine*> engineList;
 public:
 	EngineManager(void);

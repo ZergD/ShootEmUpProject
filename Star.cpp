@@ -1,23 +1,23 @@
-#include "Shot.h"
+#include "Star.h"
 #include <iostream>
 #include "graphics.h"
 #include "EngineManager.h"
 
 using namespace std;
 
-Shot::Shot(int X, int Y) {
+Star::Star(int X, int Y) {
 	positionX = X;
 	positionY = Y;
-	cout << "Shot created.\n";
+	cout << "Star created.\n";
 }
 
-Shot::Shot(void){
+Star::Star(void){
 	positionX = WIDTH / 2;
 	positionY = HEIGHT / 2;
 }
 
-Shot::Shot(EngineManager* engineManagerP, int X, int Y) {
-	longueur = -25;
+Star::Star(EngineManager* engineManagerP, int X, int Y, int size) {
+	size = -25;
 	engineManager = engineManagerP;
 	positionX = X;
 	positionY = Y;
@@ -25,12 +25,12 @@ Shot::Shot(EngineManager* engineManagerP, int X, int Y) {
 	engineManager->GetStateEngine()->addComputeObject(this);
 }
 
-Shot::~Shot(void){
+Star::~Star(void){
 	engineManager->GetStateEngine()->removeComputeObject(this);
 	engineManager->GetGraphicEngine()->removeObject(this);
 }
 
-void Shot::move(int dx, int dy) {
+void Star::move(int dx, int dy) {
 	if((positionX + dx + 25) < WIDTH || (positionX + dx - 25) > 0) {
 		positionX;
 	}
@@ -43,28 +43,26 @@ void Shot::move(int dx, int dy) {
 	}
 }
 
-void Shot::display() {
-	draw_line(positionX,positionY, positionX, positionY + longueur, build_color(250, 250, 250));
-	draw_line(positionX + 1,positionY, positionX + 1, positionY + longueur, build_color(250, 250, 250));
-	draw_line(positionX - 1,positionY, positionX - 1, positionY + longueur, build_color(250, 250, 250));
+void Star::display() {
+
 }
 
-void Shot::compute() {
+void Star::compute() {
 	int vitesse = 10;
 
 	this->setPositionY(-vitesse);
 }
 
 
-int Shot::getPositionX() {
+int Star::getPositionX() {
 	return positionX;
 }
 
-int Shot::getPositionY() {
+int Star::getPositionY() {
 	return positionY;
 }
 
-void Shot::setPositionX(int vitesse) {
+void Star::setPositionX(int vitesse) {
 	if((positionX + vitesse + 25) > WIDTH || (positionX + vitesse - 25) < 0) {
 	
 	}
@@ -73,7 +71,7 @@ void Shot::setPositionX(int vitesse) {
 	}
 } 
 
-void Shot::setPositionY(int vitesse) {
+void Star::setPositionY(int vitesse) {
 	if(positionY < 0 || positionY > HEIGHT)  {
 		delete(this);
 	}
