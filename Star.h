@@ -6,11 +6,12 @@ class EngineManager;
 
 class Star : public DisplayObject, public ComputeObject
 {
-	int positionX, positionY, size;
+	int positionX, positionY, size; //size = rayon de letoile
 	EngineManager* engineManager;
 public:
 	//Constructeurs
 	Star(void);
+	Star(EngineManager*);
 	Star(int X, int Y);
 	Star(EngineManager*, int, int, int);
 	
