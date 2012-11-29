@@ -3,7 +3,6 @@
 #include "graphics.h"
 #include "EngineManager.h"
 
-
 using namespace std;
 
 Shot::Shot(int X, int Y) {

@@ -6,6 +6,7 @@
 #include "InputEngine.h"
 #include "GraphicEngine.h"
 #include "NetworkEngine.h"
+#include "ParticleEngine.h"
 
 class EngineManager {
 
@@ -13,9 +14,10 @@ class EngineManager {
 	StateEngine* stateEngine;
 	GraphicEngine* graphicEngine;
 	NetworkEngine* networkEngine;
-	
-	std::list<Engine*> engineList;
+	ParticleEngine* particleEngine;
 
+	std::list<Engine*> engineList;
+	
 public:
 
 	EngineManager(void);
