@@ -9,7 +9,6 @@ GraphicEngine::GraphicEngine(EngineManager* EngineManagerP) {
 	engineManager = EngineManagerP;
 }
 
-
 GraphicEngine::~GraphicEngine(void) {
 }
 

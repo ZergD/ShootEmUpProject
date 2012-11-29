@@ -62,10 +62,12 @@ void SpaceShip::compute() {
 		this->setPositionX(vitesse);
 	}
 	if(engineManager->GetInputEngine()->GetToucheAppuyeeSpaceBar() && youCanShoot()) {
-		new Shot(engineManager, positionX, positionY - 50);
+		new Shot(engineManager, positionX + 10, positionY - 45);
+		new Shot(engineManager, positionX - 10, positionY - 45);
+		new Shot(engineManager, positionX + 25, positionY - 45);
+		new Shot(engineManager, positionX - 25, positionY - 45);
 	}
 }
-
 
 bool SpaceShip::youCanShoot() {
 	time_t currentShootTime = NULL;

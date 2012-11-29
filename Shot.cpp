@@ -27,6 +27,8 @@ Shot::Shot(EngineManager* engineManagerP, int X, int Y) {
 }
 
 Shot::~Shot(void){
+	engineManager->GetStateEngine()->removeComputeObject(this);
+	engineManager->GetGraphicEngine()->removeObject(this);
 }
 
 void Shot::move(int dx, int dy) {
@@ -70,8 +72,6 @@ void Shot::setPositionX(int vitesse) {
 
 void Shot::setPositionY(int vitesse) {
 	if(positionY < 0 || positionY > HEIGHT)  {
-		engineManager->GetStateEngine()->removeComputeObject(this);
-		engineManager->GetGraphicEngine()->removeObject(this);
 		delete(this);
 	}
 	else {
