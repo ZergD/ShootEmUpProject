@@ -30,4 +30,3 @@ void ParticleEngine::launch() {
 
 void ParticleEngine::process() {
 }
-

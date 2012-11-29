@@ -3,6 +3,7 @@
 #include "Star.h"
 #include "graphics.h"
 #include "EngineManager.h"
+#include <cstdlib>
 
 using namespace std;
 
