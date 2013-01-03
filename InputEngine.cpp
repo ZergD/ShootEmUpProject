@@ -6,7 +6,7 @@ using namespace std;
 
 InputEngine::InputEngine(void)
 {
-	int display = 0;
+	display = true;
 	toucheAppuyeeUp = false;
 	toucheAppuyeeDown = false;
 	toucheAppuyeeLeft = false;
@@ -16,7 +16,7 @@ InputEngine::InputEngine(void)
 
 InputEngine::InputEngine(EngineManager* engineManagerP)
 {
-	int display = 0;
+	display = true;
 	toucheAppuyeeUp = false;
 	toucheAppuyeeDown = false;
 	toucheAppuyeeLeft = false;
@@ -50,7 +50,7 @@ bool InputEngine::GetToucheAppuyeeSpaceBar() {
 	return toucheAppuyeeSpaceBar;
 }
 
-int InputEngine::GetDisplay() {
+bool InputEngine::GetDisplay() {
 	return display;
 }
 
@@ -77,7 +77,7 @@ void InputEngine::process() {
 	{
 		// si l'utilisateur demande a fermer la fenetre, on quitte le programme
 		if (event.type == SDL_QUIT)
-			display=0;
+			display = false;
 		// si l'utilisateur a appuye sur une touche...
 		if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
 		{
@@ -85,30 +85,25 @@ void InputEngine::process() {
 			switch (event.key.keysym.sym)
 			{
 				case SDLK_q :
-					display=0;
+					display = false;
 					break;
 
 				case SDLK_UP :
-					printf("appui sur la fleche du haut\n");
 					toucheAppuyeeUp = event.type == SDL_KEYDOWN;
 					break;
 				case SDLK_DOWN :
-					printf("appui sur la fleche du bas\n");
 					toucheAppuyeeDown = event.type == SDL_KEYDOWN;
 					break;
 				case SDLK_LEFT :
-					printf("appui sur la fleche de gauche\n");
 					toucheAppuyeeLeft = event.type == SDL_KEYDOWN;
 					break;
 				case SDLK_RIGHT :
-					printf("appui sur la fleche de droite\n");
 					toucheAppuyeeRight = event.type == SDL_KEYDOWN;
 					break;
 				case SDLK_SPACE :
-					printf("appui sur spaceBar\n");
 					toucheAppuyeeSpaceBar = event.type == SDL_KEYDOWN;
 				default :
-					printf("appui sur une autre touche\n");
+					printf("Unhandled key\n");
 			}
 		}
 	}

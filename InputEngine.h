@@ -8,7 +8,7 @@ class EngineManager;
 
 class InputEngine : public Engine
 {
-	int display;
+	bool display;
 	SDL_Event event;
 	bool toucheAppuyeeUp;
 	bool toucheAppuyeeDown;
@@ -26,7 +26,7 @@ public:
 	bool GetToucheAppuyeeLeft();
 	bool GetToucheAppuyeeRight();
 	bool GetToucheAppuyeeSpaceBar();
-	int GetDisplay();
+	bool GetDisplay();
 
 	void process();
 

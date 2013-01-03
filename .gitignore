@@ -1,3 +1,6 @@
+# Project Output
+ShootEmUp
+
 #################
 ## Eclipse
 #################
@@ -166,3 +169,7 @@ pip-log.txt
 *.vcxproj
 *.vcxproj.filters
 *.sln
+
+# G++
+*.d
+*.o
