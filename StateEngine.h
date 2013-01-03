@@ -3,7 +3,7 @@
 
 #include "Engine.h"
 #include "ComputeObject.h"
-#include "SpaceShip.h"
+#include "Spaceship.h"
 
 class EngineManager;
 

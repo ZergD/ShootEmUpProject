@@ -1,7 +1,7 @@
 #pragma once
 #include "Engine.h"
 #include "DisplayObject.h"
-#include "SpaceShip.h"
+#include "Spaceship.h"
 #include "graphics.h"
 #include <list>
 

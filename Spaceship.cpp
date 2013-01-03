@@ -1,5 +1,5 @@
 #include <iostream>
-#include "SpaceShip.h"
+#include "Spaceship.h"
 #include "graphics.h"
 #include "EngineManager.h"
 #include "Shot.h"

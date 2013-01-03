@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <boost/thread/thread.hpp>
 
 #include "EngineManager.h"
 #include "Spaceship.h"
@@ -27,7 +27,8 @@ void EngineManager::start() {
 		for (list<Engine*>::iterator it = engineList.begin(); it != engineList.end(); it++) {
 			(*it)->process();
 		}
-		Sleep(10);
+		
+		boost::this_thread::sleep(boost::posix_time::milliseconds(10));
 	}
 }
 
