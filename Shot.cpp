@@ -30,14 +30,10 @@ Shot::~Shot(void){
 }
 
 void Shot::move(int dx, int dy) {
-	if((positionX + dx + 25) < WIDTH || (positionX + dx - 25) > 0) {
-		positionX;
-	}
-	else if((positionY + dy) < HEIGHT || (positionY + dy - 100) > 0) {
-		positionY;
-	}
-	else {
+	if((positionX + dx + 25) > WIDTH && (positionX + dx - 25) < 0) {
 		positionX += dx;
+	}
+	if((positionY + dy) > HEIGHT && (positionY + dy - 100) < 0) {
 		positionY += dy;
 	}
 }

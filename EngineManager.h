@@ -1,28 +1,32 @@
 #pragma once
 #include <list>
+#include <iostream>
 #include "Engine.h"
 #include "StateEngine.h"
 #include "InputEngine.h"
-#include <iostream>
 #include "GraphicEngine.h"
+#include "NetworkEngine.h"
 
-using namespace std;
+class EngineManager {
 
-class EngineManager
-{
 	InputEngine* inputEngine;
-	//SpaceShip*spaceShip;
 	StateEngine* stateEngine;
 	GraphicEngine* graphicEngine;
-	list<Engine*> engineList;
+	NetworkEngine* networkEngine;
+	
+	std::list<Engine*> engineList;
+
 public:
+
 	EngineManager(void);
 	~EngineManager(void);
 
 	void start();
+
 	InputEngine* GetInputEngine();
 	StateEngine* GetStateEngine();
 	GraphicEngine* GetGraphicEngine();
-	SpaceShip* GetSpaceShip();
+	NetworkEngine* GetNetworkEngine();
+
 };
 

@@ -4,12 +4,10 @@
 
 Input::Input(void)
 {
-	int display = 0;
 	toucheAppuyeeUp = false;
 	toucheAppuyeeDown = false;
 	toucheAppuyeeLeft = false;
 	toucheAppuyeeRight = false;
-	SDL_Event event;
 }
 
 Input::~Input(void)

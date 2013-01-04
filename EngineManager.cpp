@@ -3,28 +3,26 @@
 #include "EngineManager.h"
 #include "Spaceship.h"
 
-using namespace std;
-
-EngineManager::EngineManager(void)
-{
+EngineManager::EngineManager(void) {
 	inputEngine = new InputEngine(this);
 	stateEngine = new StateEngine(this);
 	graphicEngine = new GraphicEngine(this);
-	engineList.push_front(inputEngine);
+	networkEngine = new NetworkEngine(this);
+	engineList.push_back(inputEngine);
 	engineList.push_back(stateEngine);
 	engineList.push_back(graphicEngine);
+	engineList.push_back(networkEngine);
 	new SpaceShip(this);
 }
 
-EngineManager::~EngineManager(void)
-{
+EngineManager::~EngineManager(void) {
 	
 }
 
 void EngineManager::start() {
 	init_graphics();
 	while(inputEngine->GetDisplay()) {
-		for (list<Engine*>::iterator it = engineList.begin(); it != engineList.end(); it++) {
+		for (std::list<Engine*>::iterator it = engineList.begin(); it != engineList.end(); it++) {
 			(*it)->process();
 		}
 		
@@ -44,7 +42,7 @@ StateEngine* EngineManager::GetStateEngine() {
 GraphicEngine* EngineManager::GetGraphicEngine() {
 	return graphicEngine;
 }
-/*
-SpaceShip* EngineManager::GetSpaceShip() {
-	return spaceShip;
-}*/
+
+NetworkEngine* EngineManager::GetNetworkEngine() {
+	return networkEngine;
+}

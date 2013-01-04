@@ -13,7 +13,7 @@ SpaceShip::SpaceShip(EngineManager* engineManagerP, int X, int Y) : engineManage
 }
 
 SpaceShip::SpaceShip(EngineManager* engineManagerP) : engineManager(engineManagerP) {
-	start = NULL;
+	start = 0;
 	positionX = WIDTH / 2;
 	positionY = HEIGHT / 2;
 	if (image == NULL) {
@@ -27,14 +27,10 @@ SpaceShip::~SpaceShip(void){
 }
 
 void SpaceShip::move(int dx, int dy) {
-	if((positionX + dx + 25) < WIDTH || (positionX + dx - 25) > 0) {
-		positionX;
-	}
-	else if((positionY + dy) < HEIGHT || (positionY + dy - 100) > 0) {
-		positionY;
-	}
-	else {
+	if((positionX + dx + 25) > WIDTH && (positionX + dx - 25) < 0) {
 		positionX += dx;
+	}
+	if((positionY + dy) > HEIGHT && (positionY + dy - 100) < 0) {
 		positionY += dy;
 	}
 }
@@ -74,7 +70,7 @@ void SpaceShip::compute() {
 
 bool SpaceShip::youCanShoot() {
 	double timeDifference = 0.00;
-	time_t end = NULL;
+	time_t end = 0;
 	time(&end);
 	timeDifference = difftime(end, start);
 	cout << "timeDifference = " << timeDifference << " s" << endl;
@@ -90,19 +86,13 @@ int SpaceShip::getPositionY() {
 }
 
 void SpaceShip::setPositionX(int vitesse) {
-	if((positionX + vitesse + 50) > WIDTH || (positionX + vitesse - 50) < 0) {
-	
-	}
-	else {
+	if((positionX + vitesse + 50) < WIDTH && (positionX + vitesse - 50) > 0) {
 		positionX += vitesse;
 	}
 } 
 
 void SpaceShip::setPositionY(int vitesse) {
-	if((positionY + vitesse + 45 > HEIGHT) || ((positionY + vitesse - 45) < 0)) {
-	
-	}
-	else {
+	if((positionY + vitesse + 45 < HEIGHT) && ((positionY + vitesse - 45) > 0)) {
 		positionY += vitesse;
 	}
 }
