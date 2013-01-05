@@ -13,7 +13,7 @@ SpaceShip::SpaceShip(EngineManager* engineManagerP, int X, int Y) : engineManage
 }
 
 SpaceShip::SpaceShip(EngineManager* engineManagerP) : engineManager(engineManagerP) {
-	time(&start);
+	time(&lastShootTime);
 	positionX = WIDTH / 2;
 	positionY = HEIGHT / 2;
 	if (image == NULL) {
@@ -68,12 +68,11 @@ void SpaceShip::compute() {
 
 
 bool SpaceShip::youCanShoot() {
-	time_t end = NULL;
-	time(&end);
-	double timeDifference = difftime(end, start);
-	cout << "timeDifference = " << timeDifference << " s" << endl;
+	time_t currentShootTime = NULL;
+	time(&currentShootTime);
+	double timeDifference = difftime(currentShootTime, lastShootTime);
 	if (timeDifference >= 1.00) {
-		time(&start);
+		time(&lastShootTime);
 		return true;
 	}
 	return false;
