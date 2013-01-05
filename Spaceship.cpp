@@ -13,7 +13,7 @@ SpaceShip::SpaceShip(EngineManager* engineManagerP, int X, int Y) : engineManage
 }
 
 SpaceShip::SpaceShip(EngineManager* engineManagerP) : engineManager(engineManagerP) {
-	start = 0;
+	time(&start);
 	positionX = WIDTH / 2;
 	positionY = HEIGHT / 2;
 	if (image == NULL) {
@@ -63,18 +63,20 @@ void SpaceShip::compute() {
 	}
 	if(engineManager->GetInputEngine()->GetToucheAppuyeeSpaceBar() && youCanShoot()) {
 		new Shot(engineManager, positionX, positionY - 50);
-		time(&start);
 	}
 }
 
 
 bool SpaceShip::youCanShoot() {
-	double timeDifference = 0.00;
-	time_t end = 0;
+	time_t end = NULL;
 	time(&end);
-	timeDifference = difftime(end, start);
+	double timeDifference = difftime(end, start);
 	cout << "timeDifference = " << timeDifference << " s" << endl;
-	return (timeDifference >= 1.00);
+	if (timeDifference >= 1.00) {
+		time(&start);
+		return true;
+	}
+	return false;
 }
 
 int SpaceShip::getPositionX() {
