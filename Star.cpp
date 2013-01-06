@@ -2,7 +2,8 @@
 #include <iostream>
 #include "graphics.h"
 #include "EngineManager.h"
-#include <cstdlib>
+#include <time.h>
+#include "Windows.h"
 
 using namespace std;
 
@@ -18,12 +19,17 @@ Star::Star(void){
 }
 
 Star::Star(EngineManager* engineManagerP) {
+	/* initialize random seed: */
+	srand(time(NULL));
+	
 	engineManager = engineManagerP;
 	positionX = rand() % WIDTH + 1; //random entre 1 et WIDTH
+	//positionY = -(rand() % HEIGHT + 1);
 	positionY = 1;
 	size = 10;
 	engineManager->GetGraphicEngine()->addObject(this);
 	engineManager->GetStateEngine()->addComputeObject(this);
+	Sleep(2000);
 }
 
 Star::Star(EngineManager* engineManagerP, int X, int Y, int sizeArg) {
@@ -54,7 +60,7 @@ void Star::move(int dx, int dy) {
 }
 
 void Star::display() {
-	//Position Y/X = milieu de l etoile
+	//Position Y, positionX = milieu de l etoile
 	draw_line(positionX - size, positionY, positionX + size, positionY, build_color(250,250,250)); //ligne horizontale
 	draw_line(positionX, positionY - size, positionX, positionY + size, build_color(250,250,250)); //ligne verticale
 }
@@ -84,7 +90,7 @@ void Star::setPositionX(int vitesse) {
 } 
 
 void Star::setPositionY(int vitesse) {
-	if(positionY < 0 || positionY > HEIGHT)  {
+	if(positionY > HEIGHT)  {
 		delete(this);
 	}
 	else {
