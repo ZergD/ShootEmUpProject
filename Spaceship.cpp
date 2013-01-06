@@ -13,7 +13,7 @@ SpaceShip::SpaceShip(EngineManager* engineManagerP, int X, int Y) : engineManage
 }
 
 SpaceShip::SpaceShip(EngineManager* engineManagerP) : engineManager(engineManagerP) {
-	start = NULL;
+	time(&start);
 	positionX = WIDTH / 2;
 	positionY = HEIGHT / 2;
 	if (image == NULL) {
