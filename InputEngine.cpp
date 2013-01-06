@@ -2,8 +2,6 @@
 #include "SDL.h"
 #include <iostream>
 
-using namespace std;
-
 InputEngine::InputEngine(void)
 {
 	display = true;

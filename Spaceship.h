@@ -9,7 +9,7 @@ class EngineManager;
 class SpaceShip : public DisplayObject, public ComputeObject
 {
 	int positionX, positionY;
-	time_t start;
+	time_t lastShootTime;
 	EngineManager* engineManager;
 public:
 	//Constructeurs
