@@ -10,7 +10,7 @@ EngineManager::EngineManager(void)
 	inputEngine = new InputEngine(this);
 	stateEngine = new StateEngine(this);
 	graphicEngine = new GraphicEngine(this);
-	particleEngine = new ParticleEngine(this);
+	//particleEngine = new ParticleEngine(this);
 	engineList.push_front(inputEngine);
 	engineList.push_back(stateEngine);
 	engineList.push_back(graphicEngine);
