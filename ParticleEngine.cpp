@@ -1,4 +1,5 @@
 #include "ParticleEngine.h"
+#include "Windows.h"
 
 
 ParticleEngine::ParticleEngine(void)
@@ -26,6 +27,7 @@ void ParticleEngine::launch() {
 	/*for(i = 0; i < starNumber; i++) {
 		new Star(engineManager);
 	}*/
+	
 }
 
 void ParticleEngine::process() {

@@ -3,7 +3,8 @@
 #include "Star.h"
 #include "graphics.h"
 #include "EngineManager.h"
-#include <cstdlib>
+#include <time.h>
+#include "Windows.h"
 
 using namespace std;
 
@@ -29,6 +30,7 @@ Star::Star(EngineManager* engineManagerP) {
 	size = 10;
 	engineManager->GetGraphicEngine()->addObject(this);
 	engineManager->GetStateEngine()->addComputeObject(this);
+	Sleep(2000);
 }
 
 Star::Star(EngineManager* engineManagerP, int X, int Y, int sizeArg) {
@@ -89,7 +91,7 @@ void Star::setPositionX(int vitesse) {
 } 
 
 void Star::setPositionY(int vitesse) {
-	if(positionY < 0 || positionY > HEIGHT)  {
+	if(positionY > HEIGHT)  {
 		delete(this);
 	}
 	else {
