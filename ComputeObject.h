@@ -1,10 +1,12 @@
 #pragma once
-class ComputeObject
-{
+
+class ComputeObject {
 public:
 
 	virtual ~ComputeObject(void);
 	virtual void compute() = 0;
+
 };
-	inline ComputeObject::~ComputeObject() {};
+
+inline ComputeObject::~ComputeObject() {};
 

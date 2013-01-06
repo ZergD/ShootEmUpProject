@@ -1,10 +1,7 @@
 #include "GraphicEngine.h"
 #include "EngineManager.h"
 
-using namespace std;
-
-GraphicEngine::GraphicEngine(void)
-{
+GraphicEngine::GraphicEngine(void) {
 
 }
 
@@ -13,11 +10,10 @@ GraphicEngine::GraphicEngine(EngineManager* EngineManagerP) {
 }
 
 
-GraphicEngine::~GraphicEngine(void)
-{
+GraphicEngine::~GraphicEngine(void) {
 }
 
-void GraphicEngine::addObject(DisplayObject* displayObject){
+void GraphicEngine::addObject(DisplayObject* displayObject) {
 	displayObjectList.push_front(displayObject);
 }
 
@@ -25,8 +21,7 @@ void GraphicEngine::removeObject(DisplayObject* displayObject) {
 	displayObjectList.remove(displayObject);
 }
 
-void GraphicEngine::process() {	
-		
+void GraphicEngine::process() {
 	// on verrouille l'ecran /
 	lock();
 
@@ -38,7 +33,7 @@ void GraphicEngine::process() {
 		
 	for (list<DisplayObject*>::iterator it = displayObjectList.begin(); it != displayObjectList.end(); it++) {
 			(*it)->display();
-	}	
+	}
 
 	// on deverouille et on rafraichit l'ecran
     unlock();
