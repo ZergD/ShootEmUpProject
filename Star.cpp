@@ -3,8 +3,6 @@
 #include "Star.h"
 #include "graphics.h"
 #include "EngineManager.h"
-#include <time.h>
-#include "Windows.h"
 
 using namespace std;
 
@@ -30,7 +28,6 @@ Star::Star(EngineManager* engineManagerP) {
 	size = 10;
 	engineManager->GetGraphicEngine()->addObject(this);
 	engineManager->GetStateEngine()->addComputeObject(this);
-	Sleep(2000);
 }
 
 Star::Star(EngineManager* engineManagerP, int X, int Y, int sizeArg) {

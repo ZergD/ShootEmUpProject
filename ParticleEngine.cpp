@@ -1,5 +1,4 @@
 #include "ParticleEngine.h"
-#include "Windows.h"
 
 
 ParticleEngine::ParticleEngine(void)
