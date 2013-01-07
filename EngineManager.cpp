@@ -19,7 +19,6 @@ EngineManager::~EngineManager(void) {
 }
 
 void EngineManager::start() {
-	init_graphics();
 	while(inputEngine->GetDisplay()) {
 		for (std::list<Engine*>::iterator it = engineList.begin(); it != engineList.end(); it++) {
 			(*it)->process();

@@ -1,9 +1,8 @@
-#include "Star.h"
 #include <iostream>
+
+#include "Star.h"
 #include "graphics.h"
 #include "EngineManager.h"
-#include <time.h>
-#include "Windows.h"
 
 using namespace std;
 
@@ -29,7 +28,6 @@ Star::Star(EngineManager* engineManagerP) {
 	size = 10;
 	engineManager->GetGraphicEngine()->addObject(this);
 	engineManager->GetStateEngine()->addComputeObject(this);
-	Sleep(2000);
 }
 
 Star::Star(EngineManager* engineManagerP, int X, int Y, int sizeArg) {
@@ -61,8 +59,8 @@ void Star::move(int dx, int dy) {
 
 void Star::display() {
 	//Position Y, positionX = milieu de l etoile
-	draw_line(positionX - size, positionY, positionX + size, positionY, build_color(250,250,250)); //ligne horizontale
-	draw_line(positionX, positionY - size, positionX, positionY + size, build_color(250,250,250)); //ligne verticale
+	Graphics::draw_line(positionX - size, positionY, positionX + size, positionY, Graphics::build_color(250,250,250)); //ligne horizontale
+	Graphics::draw_line(positionX, positionY - size, positionX, positionY + size, Graphics::build_color(250,250,250)); //ligne verticale
 }
 
 void Star::compute() {
