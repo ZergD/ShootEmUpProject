@@ -1,8 +1,14 @@
 #include "NetworkEngine.h"
 #include "EngineManager.h"
 
-NetworkEngine::NetworkEngine(EngineManager* EngineManagerP) {
+NetworkEngine::NetworkEngine(EngineManager* EngineManagerP)
+	: socket(io_service) {
 	engineManager = EngineManagerP;
+
+	boost::asio::ip::tcp::resolver resolver(io_service);
+    boost::asio::ip::tcp::resolver::query query(boost::asio::ip::tcp::v4(), "localhost", "9999");
+    boost::asio::ip::tcp::resolver::iterator iterator = resolver.resolve(query);
+    boost::asio::connect(socket, iterator);
 }
 
 
