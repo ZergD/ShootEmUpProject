@@ -1,5 +1,6 @@
 #pragma once
 #include <list>
+#include "Engine.h"
 #include "Star.h"
 
 class ParticleEngine : public Engine {
