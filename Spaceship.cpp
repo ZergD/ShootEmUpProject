@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include "Spaceship.h"
 #include "graphics.h"
 #include "EngineManager.h"
@@ -36,14 +37,14 @@ void SpaceShip::move(int dx, int dy) {
 }
 
 void SpaceShip::displaySingularShip () {
-	fill_triangle(positionX + 25 , positionY ,
+	Graphics::fill_triangle(positionX + 25 , positionY ,
 			      positionX - 25 , positionY ,
 				  positionX      , positionY - 100,
-				  build_color(250, 250, 250));
+				  Graphics::build_color(250, 250, 250));
 }
 
 void SpaceShip::display() {
-	display_image(image, positionX - 50, positionY - 45);
+	Graphics::display_image(image, positionX - 50, positionY - 45);
 }
 
 void SpaceShip::compute() {

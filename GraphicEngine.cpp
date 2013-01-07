@@ -1,12 +1,12 @@
+#include "graphics.h"
 #include "GraphicEngine.h"
 #include "EngineManager.h"
 
-GraphicEngine::GraphicEngine(void) {
-
-}
-
 GraphicEngine::GraphicEngine(EngineManager* EngineManagerP) {
 	engineManager = EngineManagerP;
+	
+	Graphics::init_graphics();
+	backgroundColor = Graphics::build_color(0, 0, 0);
 }
 
 GraphicEngine::~GraphicEngine(void) {
@@ -22,10 +22,10 @@ void GraphicEngine::removeObject(DisplayObject* displayObject) {
 
 void GraphicEngine::process() {
 	// on verrouille l'ecran /
-	lock();
+	Graphics::lock();
 
 	// on remplit la fenetre avec la couleur cree au debut de la fonction
-	fill_screen(build_color(0, 0, 0));
+	Graphics::fill_screen(backgroundColor);
 
 	// on dessine un triangle
 	//engineManager->GetStateEngine()->GetSpaceShip()->displaySingularShip();
@@ -35,8 +35,8 @@ void GraphicEngine::process() {
 	}
 
 	// on deverouille et on rafraichit l'ecran
-    unlock();
+    Graphics::unlock();
 
 	//on attend le temps necessaire pour atteindre le taux de rafraichissement souhaite
-	sync();
+	Graphics::sync();
 }

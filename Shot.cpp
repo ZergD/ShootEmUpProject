@@ -40,9 +40,9 @@ void Shot::move(int dx, int dy) {
 }
 
 void Shot::display() {
-	draw_line(positionX,positionY, positionX, positionY + longueur, build_color(250, 250, 250));
-	draw_line(positionX + 1,positionY, positionX + 1, positionY + longueur, build_color(250, 250, 250));
-	draw_line(positionX - 1,positionY, positionX - 1, positionY + longueur, build_color(250, 250, 250));
+	Graphics::draw_line(positionX,positionY, positionX, positionY + longueur, Graphics::build_color(250, 250, 250));
+	Graphics::draw_line(positionX + 1,positionY, positionX + 1, positionY + longueur, Graphics::build_color(250, 250, 250));
+	Graphics::draw_line(positionX - 1,positionY, positionX - 1, positionY + longueur, Graphics::build_color(250, 250, 250));
 }
 
 void Shot::compute() {
