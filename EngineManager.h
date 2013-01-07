@@ -15,7 +15,7 @@ class EngineManager {
 	GraphicEngine* graphicEngine;
 	NetworkEngine* networkEngine;
 	ParticleEngine* particleEngine;
-
+	
 	std::list<Engine*> engineList;
 	
 public:
