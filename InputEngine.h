@@ -15,6 +15,7 @@ class InputEngine : public Engine {
 	int movementX;
 	int movementY;
 	bool shoot;
+	int logAsPlayer;
 	
 public:
 
@@ -27,6 +28,8 @@ public:
 	int getMovementX();
 	int getMovementY();
 	bool isShoot();
+	int getLogAsPlayer();
+	void resetLogAsPlayer();
 
 };
 

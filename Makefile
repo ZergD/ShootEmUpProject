@@ -57,10 +57,10 @@
 ##==========================================================================
 
 # The pre-processor and compiler options.
-MY_CFLAGS = `sdl-config --cflags`
+MY_CFLAGS = `sdl-config --cflags` -I.
 
 # The linker options.
-MY_LIBS   = `sdl-config --libs` -l:libboost_system.so.1.49.0 -l:libboost_thread.so.1.49.0
+MY_LIBS   = `sdl-config --libs` -lprotobuf -l:libboost_system.so.1.49.0 -l:libboost_thread.so.1.49.0
 
 # The pre-processor options used by the cpp (man cpp for more).
 CPPFLAGS  = -Wall
@@ -70,7 +70,7 @@ LDFLAGS   =
 
 # The directories in which source files reside.
 # If not specified, only the current directory will be serached.
-SRCDIRS   =
+SRCDIRS   = . Proto/Server
 
 # The executable file name.
 # If not specified, current directory name or `a.out' will be used.

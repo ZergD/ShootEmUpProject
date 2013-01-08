@@ -8,10 +8,13 @@ EngineManager::EngineManager(void) {
 	stateEngine = new StateEngine(this);
 	graphicEngine = new GraphicEngine(this);
 	networkEngine = new NetworkEngine(this);
-	//particleEngine = new ParticleEngine(this);
+
 	engineList.push_front(inputEngine);
+	engineList.push_front(networkEngine);
 	engineList.push_back(stateEngine);
 	engineList.push_back(graphicEngine);
+	
+	//particleEngine = new ParticleEngine(this);
 	new SpaceShip(this);
 }
 

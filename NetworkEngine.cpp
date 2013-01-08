@@ -1,5 +1,10 @@
+#include <boost/lexical_cast.hpp>
+
 #include "NetworkEngine.h"
 #include "EngineManager.h"
+
+#include "Proto/Server/DownstreamMessage.pb.h"
+#include "Proto/Server/UpstreamMessage.pb.h"
 
 NetworkEngine::NetworkEngine(EngineManager* EngineManagerP)
 	: socket(io_service) {
@@ -15,7 +20,7 @@ NetworkEngine::NetworkEngine(EngineManager* EngineManagerP)
 NetworkEngine::~NetworkEngine(void) {
 }
 
-void NetworkEngine::addObject(NetworkObject* networkObject){
+void NetworkEngine::addObject(NetworkObject* networkObject) {
 	networkObjectMap.insert(std::pair<std::string, NetworkObject*>(networkObject->getId(), networkObject));
 }
 
@@ -24,9 +29,22 @@ void NetworkEngine::removeObject(NetworkObject* networkObject) {
 }
 
 void NetworkEngine::process() {
-
+	if (engineManager->GetInputEngine()->getLogAsPlayer() > 0) {
+    	// Authenticate Send message
+	    DownstreamMessageProto authenticateMessage;
+	    authenticateMessage.set_type(DownstreamMessageProto::AUTHENTICATE);
+	    authenticateMessage.set_data(boost::lexical_cast<string>(engineManager->GetInputEngine()->getLogAsPlayer()));
+	    sendMessage(&authenticateMessage);
+    	engineManager->GetInputEngine()->resetLogAsPlayer();
+	}
 }
 
-void NetworkEngine::display() {
-	
+void NetworkEngine::sendMessage(DownstreamMessageProto* message) {
+    boost::asio::streambuf b;
+    std::ostream os(&b);
+
+    char size = message->ByteSize();
+    os.write(&size, sizeof(char));
+    message->SerializeToOstream(&os);
+    boost::asio::write(socket, b);
 }

@@ -8,7 +8,7 @@ class EngineManager;
 
 class SpaceShip : public DisplayObject, public ComputeObject {
 
-	static const int VITESSE = 5;
+	static const int VITESSE = 10;
 
 	int positionX, positionY;
 	time_t lastShootTime;

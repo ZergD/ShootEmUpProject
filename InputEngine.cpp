@@ -8,6 +8,7 @@ InputEngine::InputEngine(EngineManager* engineManagerP) {
 	movementX = 0;
 	movementY = 0;
 	shoot = false;
+	logAsPlayer = 0;
 }
 
 InputEngine::~InputEngine(void) {
@@ -29,6 +30,17 @@ void InputEngine::process() {
 			switch (event.key.keysym.sym) {
 				case SDLK_ESCAPE :
 					display = false;
+					break;
+
+				case SDLK_F1 :
+					if (logAsPlayer == 0) {
+						logAsPlayer = 1;
+					}
+					break;
+				case SDLK_F2 :
+					if (logAsPlayer == 0) {
+						logAsPlayer = 2;
+					}
 					break;
 
 				case SDLK_UP :
@@ -68,5 +80,13 @@ int InputEngine::getMovementY() {
 
 bool InputEngine::isShoot() {
 	return shoot;
+}
+
+int InputEngine::getLogAsPlayer() {
+	return logAsPlayer;
+}
+
+void InputEngine::resetLogAsPlayer() {
+	logAsPlayer = -1;
 }
 
