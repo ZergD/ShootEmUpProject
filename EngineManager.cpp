@@ -20,7 +20,7 @@ EngineManager::~EngineManager(void) {
 }
 
 void EngineManager::start() {
-	while(inputEngine->GetDisplay()) {
+	while(inputEngine->isDisplay()) {
 		for (std::list<Engine*>::iterator it = engineList.begin(); it != engineList.end(); it++) {
 			(*it)->process();
 		}

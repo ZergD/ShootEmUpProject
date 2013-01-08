@@ -48,21 +48,10 @@ void SpaceShip::display() {
 }
 
 void SpaceShip::compute() {
-	int vitesse = 5;
+	this->setPositionX(engineManager->GetInputEngine()->getMovementX() * VITESSE);
+	this->setPositionY(engineManager->GetInputEngine()->getMovementY() * VITESSE);
 
-	if(engineManager->GetInputEngine()->GetToucheAppuyeeUp()) {
-		this->setPositionY(-vitesse);
-	}
-	if(engineManager->GetInputEngine()->GetToucheAppuyeeDown()) {
-		this->setPositionY(vitesse);
-	}
-	if(engineManager->GetInputEngine()->GetToucheAppuyeeLeft()) {
-		this->setPositionX(-vitesse);
-	}
-	if(engineManager->GetInputEngine()->GetToucheAppuyeeRight()) {
-		this->setPositionX(vitesse);
-	}
-	if(engineManager->GetInputEngine()->GetToucheAppuyeeSpaceBar() && youCanShoot()) {
+	if(engineManager->GetInputEngine()->isShoot() && youCanShoot()) {
 		new Shot(engineManager, positionX + 10, positionY - 45);
 		new Shot(engineManager, positionX - 10, positionY - 45);
 		new Shot(engineManager, positionX + 25, positionY - 45);
@@ -71,7 +60,7 @@ void SpaceShip::compute() {
 }
 
 bool SpaceShip::youCanShoot() {
-	time_t currentShootTime = NULL;
+	time_t currentShootTime = 0;
 	time(&currentShootTime);
 	double timeDifference = difftime(currentShootTime, lastShootTime);
 	if (timeDifference >= 1.00) {
