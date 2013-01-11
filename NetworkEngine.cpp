@@ -1,4 +1,5 @@
 #include <boost/lexical_cast.hpp>
+#include <boost/bind.hpp>
 
 #include "NetworkEngine.h"
 #include "EngineManager.h"
@@ -14,8 +15,11 @@ NetworkEngine::NetworkEngine(EngineManager* EngineManagerP)
     boost::asio::ip::tcp::resolver::query query(boost::asio::ip::tcp::v4(), "localhost", "9999");
     boost::asio::ip::tcp::resolver::iterator iterator = resolver.resolve(query);
     boost::asio::connect(socket, iterator);
-}
 
+    char lengthFieldBuffer[MESSAGE_LENGHT_FIELD_SIZE];
+    boost::asio::async_read(socket, boost::asio::buffer(lengthFieldBuffer), boost::asio::transfer_exactly(MESSAGE_LENGHT_FIELD_SIZE),
+        boost::bind(&NetworkEngine::processHeader, this, boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred));
+}
 
 NetworkEngine::~NetworkEngine(void) {
 }
@@ -39,12 +43,25 @@ void NetworkEngine::process() {
 	}
 }
 
+void NetworkEngine::processHeader(const boost::system::error_code& error, std::size_t bytes_transferred) {
+    printf("received");
+	if (!error) {
+		printf("received");
+    }
+}
+
 void NetworkEngine::sendMessage(DownstreamMessageProto* message) {
     boost::asio::streambuf b;
     std::ostream os(&b);
 
-    char size = message->ByteSize();
-    os.write(&size, sizeof(char));
+    int size = message->ByteSize();
+    unsigned char bytes[4];
+    bytes[0] = (size >> 24) & 0xFF;
+    bytes[1] = (size >> 16) & 0xFF;
+    bytes[2] = (size >> 8) & 0xFF;
+    bytes[3] = size & 0xFF;
+
+    os.write(reinterpret_cast<const char*>(bytes), sizeof(int));
     message->SerializeToOstream(&os);
     boost::asio::write(socket, b);
 }

@@ -14,6 +14,8 @@ class DownstreamMessageProto;
 
 class NetworkEngine : public Engine {
 
+    enum { MESSAGE_LENGHT_FIELD_SIZE = sizeof(int) };
+
 	EngineManager* engineManager;
 	std::map<std::string, NetworkObject*> networkObjectMap;
 	std::queue<UpstreamMessageProto*> messageQueue;
@@ -27,6 +29,7 @@ public:
 	~NetworkEngine(void);
 
 	void process();
+	void processHeader(const boost::system::error_code& error, size_t bytes_transferred);
 
 	void addObject(NetworkObject*);
 	void removeObject(NetworkObject*);
