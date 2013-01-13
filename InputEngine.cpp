@@ -44,16 +44,16 @@ void InputEngine::process() {
 					break;
 
 				case SDLK_UP :
-					movementY = event.type == SDL_KEYDOWN ? -1 : 0;
+					movementY += event.type == SDL_KEYDOWN ? -1 : 1;
 					break;
 				case SDLK_DOWN :
-					movementY = event.type == SDL_KEYDOWN ? 1 : 0;
+					movementY += event.type == SDL_KEYDOWN ? 1 : -1;
 					break;
 				case SDLK_LEFT :
-					movementX = event.type == SDL_KEYDOWN ? -1 : 0;
+					movementX += event.type == SDL_KEYDOWN ? -1 : 1;
 					break;
 				case SDLK_RIGHT :
-					movementX = event.type == SDL_KEYDOWN ? 1 : 0;
+					movementX += event.type == SDL_KEYDOWN ? 1 : -1;
 					break;
 				case SDLK_SPACE :
 					shoot = event.type == SDL_KEYDOWN;
