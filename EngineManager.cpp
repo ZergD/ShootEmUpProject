@@ -15,7 +15,7 @@ EngineManager::EngineManager(void) {
 	engineList.push_back(graphicEngine);
 	
 	//particleEngine = new ParticleEngine(this);
-	new SpaceShip(this);
+	//new SpaceShip(this);
 }
 
 EngineManager::~EngineManager(void) {

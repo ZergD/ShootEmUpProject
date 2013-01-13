@@ -34,6 +34,7 @@ void NetworkEngine::removeObject(NetworkObject* networkObject) {
 }
 
 void NetworkEngine::process() {
+	// TODO move to a Player domain object
 	if (engineManager->GetInputEngine()->getLogAsPlayer() > 0) {
 		// Authenticate Send message
 		DownstreamMessageProto authenticateMessage;
@@ -41,6 +42,16 @@ void NetworkEngine::process() {
 		authenticateMessage.set_data(boost::lexical_cast<string>(engineManager->GetInputEngine()->getLogAsPlayer()));
 		sendMessage(&authenticateMessage);
 		engineManager->GetInputEngine()->resetLogAsPlayer();
+	}
+
+	while (!messageQueue.empty()) {
+		UpstreamMessageProto* message = messageQueue.front();
+		switch (message->type()) {
+		case UpstreamMessageProto_Type_AUTHENTICATED:
+				new SpaceShip(engineManager);
+			break;
+		}
+		messageQueue.pop();
 	}
 }
 
@@ -52,7 +63,7 @@ void NetworkEngine::processConnect(const boost::system::error_code& error) {
 }
 
 void NetworkEngine::processHeader(const boost::system::error_code& error) {
-    if (!error) {
+	if (!error) {
 		int bodyLength = 0;
 		bodyLength = (bodyLength << 8) + networkMessage.lengthFieldBuffer[0];
 		bodyLength = (bodyLength << 8) + networkMessage.lengthFieldBuffer[1];
@@ -62,7 +73,7 @@ void NetworkEngine::processHeader(const boost::system::error_code& error) {
 		networkMessage.bodyBuffer = new char[bodyLength];
 		boost::asio::async_read(socket, boost::asio::buffer(networkMessage.bodyBuffer, bodyLength), 
 			boost::bind(&NetworkEngine::processBody, this, boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred));
-    }
+	}
 }
 
 void NetworkEngine::processBody(const boost::system::error_code& error, std::size_t bytes_transferred) {
@@ -70,8 +81,10 @@ void NetworkEngine::processBody(const boost::system::error_code& error, std::siz
 		UpstreamMessageProto upstreamMessageProto;
 		upstreamMessageProto.ParseFromArray(networkMessage.bodyBuffer, bytes_transferred);
 		delete[] networkMessage.bodyBuffer;
+		messageQueue.push(&upstreamMessageProto);
 
-		std::cout << "Received message " << upstreamMessageProto.Type_Name(upstreamMessageProto.type()) << std::endl;
+		boost::asio::async_read(socket, boost::asio::buffer(networkMessage.lengthFieldBuffer, MESSAGE_LENGHT_FIELD_SIZE),
+			boost::bind(&NetworkEngine::processHeader, this, boost::asio::placeholders::error));
 	}
 }
 
