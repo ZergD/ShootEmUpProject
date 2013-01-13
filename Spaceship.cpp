@@ -1,22 +1,23 @@
 #include <iostream>
+#include <boost\lexical_cast.hpp>
+
+#include "Proto\Common\Object.pb.h"
 
 #include "Spaceship.h"
 #include "graphics.h"
 #include "EngineManager.h"
 #include "Shot.h"
 
+
 SDL_Surface *image = NULL;
 
-SpaceShip::SpaceShip(EngineManager* engineManagerP, int X, int Y) : engineManager(engineManagerP) {
-	positionX = X;
-	positionY = Y;
-	cout << "SpaceShip created.\n";
-}
-
-SpaceShip::SpaceShip(EngineManager* engineManagerP) : engineManager(engineManagerP) {
+SpaceShip::SpaceShip(EngineManager* engineManagerP, ObjectProto proto) : engineManager(engineManagerP) {
+	// TODO : parse all system objects ?
+	ObjectProto_SystemObjectProto geometrySystemObjectProto = proto.systemobjects().Get(0);
+	PropertyProto propertyProto = geometrySystemObjectProto.properties().Get(0);
 	time(&lastShootTime);
-	positionX = WIDTH / 2;
-	positionY = HEIGHT / 2;
+	positionX = boost::lexical_cast<int> (propertyProto.value().Get(0));
+	positionY = boost::lexical_cast<int> (propertyProto.value().Get(1));
 	if (image == NULL) {
 		image = SDL_LoadBMP("Images/SpaceShip.bmp");
 	}
@@ -24,7 +25,7 @@ SpaceShip::SpaceShip(EngineManager* engineManagerP) : engineManager(engineManage
 	engineManager->GetStateEngine()->addComputeObject(this);
 }
 
-SpaceShip::~SpaceShip(void){
+SpaceShip::~SpaceShip(void) {
 }
 
 void SpaceShip::move(int dx, int dy) {

@@ -5,6 +5,7 @@
 #include "time.h"
 
 class EngineManager;
+class ObjectProto;
 
 class SpaceShip : public DisplayObject, public ComputeObject {
 
@@ -17,8 +18,7 @@ class SpaceShip : public DisplayObject, public ComputeObject {
 public:
 
 	//Constructeurs
-	SpaceShip(EngineManager*, int X, int Y);
-	SpaceShip(EngineManager*);
+	SpaceShip(EngineManager*, ObjectProto proto);
 	
 	//Destructeur
 	~SpaceShip(void);

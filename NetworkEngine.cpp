@@ -2,11 +2,13 @@
 #include <boost/thread/thread.hpp>
 #include <boost/bind.hpp>
 
-#include "NetworkEngine.h"
-#include "EngineManager.h"
-
 #include "Proto/Server/DownstreamMessage.pb.h"
 #include "Proto/Server/UpstreamMessage.pb.h"
+#include "Proto/Message/Authenticated.pb.h"
+
+#include "NetworkEngine.h"
+#include "EngineManager.h"
+#include "ControlledSpaceship.h"
 
 NetworkEngine::NetworkEngine(EngineManager* EngineManagerP)
 	: socket(io_service) {
@@ -46,12 +48,18 @@ void NetworkEngine::process() {
 
 	while (!messageQueue.empty()) {
 		UpstreamMessageProto* message = messageQueue.front();
+		// TODO use map
 		switch (message->type()) {
 		case UpstreamMessageProto_Type_AUTHENTICATED:
-				new SpaceShip(engineManager);
+			AuthenticatedProto proto;
+			proto.ParseFromString(message->data().c_str());
+			if (proto.players().size() > 0) {
+				new ControlledSpaceShip(engineManager, proto.players().Get(0));
+			}
 			break;
 		}
 		messageQueue.pop();
+		delete message;
 	}
 }
 
@@ -78,10 +86,10 @@ void NetworkEngine::processHeader(const boost::system::error_code& error) {
 
 void NetworkEngine::processBody(const boost::system::error_code& error, std::size_t bytes_transferred) {
 	if (!error) {
-		UpstreamMessageProto upstreamMessageProto;
-		upstreamMessageProto.ParseFromArray(networkMessage.bodyBuffer, bytes_transferred);
+		UpstreamMessageProto* upstreamMessageProto = new UpstreamMessageProto();
+		upstreamMessageProto->ParseFromArray(networkMessage.bodyBuffer, bytes_transferred);
+		messageQueue.push(upstreamMessageProto);
 		delete[] networkMessage.bodyBuffer;
-		messageQueue.push(&upstreamMessageProto);
 
 		boost::asio::async_read(socket, boost::asio::buffer(networkMessage.lengthFieldBuffer, MESSAGE_LENGHT_FIELD_SIZE),
 			boost::bind(&NetworkEngine::processHeader, this, boost::asio::placeholders::error));
