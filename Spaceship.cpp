@@ -1,7 +1,7 @@
 #include <iostream>
-#include <boost\lexical_cast.hpp>
+#include <boost/lexical_cast.hpp>
 
-#include "Proto\Common\Object.pb.h"
+#include "Proto/Common/Object.pb.h"
 
 #include "Spaceship.h"
 #include "graphics.h"

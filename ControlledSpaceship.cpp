@@ -1,4 +1,4 @@
-#include "Proto\Common\Object.pb.h"
+#include "Proto/Common/Object.pb.h"
 
 #include "ControlledSpaceship.h"
 #include "EngineManager.h"
