@@ -29,6 +29,7 @@ public:
 	StateEngine* GetStateEngine();
 	GraphicEngine* GetGraphicEngine();
 	NetworkEngine* GetNetworkEngine();
+	ParticleEngine* GetParticleEngine();
 
 };
 
