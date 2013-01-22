@@ -7,15 +7,17 @@
 #include "boost/generator_iterator.hpp"
 
 class ParticleEngine : public Engine {
-	std::list<Star*> StarList;
-	EngineManager* engineManager;
-	        // produces randomness out of thin air, see pseudo-random number generators                                 
-public:
-	ParticleEngine(void);
-	ParticleEngine(EngineManager*);
-	~ParticleEngine(void);
+    std::list<Star*> StarList;
+    EngineManager* engineManager;
+    boost::random::mt19937 random;
+    boost::random::uniform_int_distribution<> generator;
 
-	void launch();
-	void process();
+public:
+    ParticleEngine(void);
+    ParticleEngine(EngineManager*);
+    ~ParticleEngine(void);
+
+    void launch();
+    void process();
 };
 
