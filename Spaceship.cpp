@@ -48,7 +48,7 @@ void SpaceShip::display() {
 }
 
 void SpaceShip::compute() {
-	int vitesse = 5;
+	int vitesse = 10;
 
 	if(engineManager->GetInputEngine()->GetToucheAppuyeeUp()) {
 		this->setPositionY(-vitesse);

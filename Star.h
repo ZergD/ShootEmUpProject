@@ -20,7 +20,7 @@ public:
 	Star(void);
 	Star(EngineManager*);
 	Star(int X, int Y);
-	Star(EngineManager*, int, int);
+	Star(EngineManager*, int, int, int);
 	
 	//Destructeur
 	~Star(void);

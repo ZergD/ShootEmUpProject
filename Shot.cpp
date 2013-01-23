@@ -46,7 +46,7 @@ void Shot::display() {
 }
 
 void Shot::compute() {
-	int vitesse = 10;
+	int vitesse = 15;
 
 	this->setPositionY(-vitesse);
 }

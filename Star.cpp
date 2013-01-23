@@ -26,21 +26,18 @@ Star::Star(EngineManager* engineManagerP) {
 	engineManager->GetStateEngine()->addComputeObject(this);
 }
 
-Star::Star(EngineManager* engineManagerP, int X, int Y) {
+Star::Star(EngineManager* engineManagerP, int X, int Y, int sizeArg) {
 	engineManager = engineManagerP;
 	random = *new boost::random::mt19937(std::time(0));
 	generatorSize1 = *new boost::random::uniform_int_distribution<>(0, 11);
 	generatorSize2 = *new boost::random::uniform_int_distribution<>(0, 5);
-	
-    starType = generatorSize1(random); 
-	//size = starType;
-	if(starType < 5) {
+	 
+	size = sizeArg;
+	if(sizeArg < 5) {
 		starType = 0;
-		size = starType;
 	}
 	else {
 		starType = 1;
-		size = generatorSize2(random);
 	}
 
 	positionX = X;
