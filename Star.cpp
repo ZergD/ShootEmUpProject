@@ -17,12 +17,8 @@ Star::Star(void){
 	positionY = HEIGHT / 2;
 }
 
-Star::Star(EngineManager* engineManagerP) {
-	/* initialize random seed: */
-	srand(time(NULL));
-	
+Star::Star(EngineManager* engineManagerP) {	
 	engineManager = engineManagerP;
-	positionX = rand() % WIDTH + 1; //random entre 1 et WIDTH
 	//positionY = -(rand() % HEIGHT + 1);
 	positionY = 1;
 	size = 10;
@@ -37,9 +33,11 @@ Star::Star(EngineManager* engineManagerP, int X, int Y, int sizeArg) {
 	size = sizeArg;
 	engineManager->GetGraphicEngine()->addObject(this);
 	engineManager->GetStateEngine()->addComputeObject(this);
+	engineManager->GetParticleEngine()->addStar(this);
 }
 
 Star::~Star(void){
+	engineManager->GetParticleEngine()->removeStar(this);
 	engineManager->GetStateEngine()->removeComputeObject(this);
 	engineManager->GetGraphicEngine()->removeObject(this);
 }

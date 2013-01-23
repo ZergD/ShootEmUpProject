@@ -10,6 +10,7 @@ GraphicEngine::GraphicEngine(EngineManager* EngineManagerP) {
 }
 
 GraphicEngine::~GraphicEngine(void) {
+
 }
 
 void GraphicEngine::addObject(DisplayObject* displayObject) {
@@ -26,9 +27,6 @@ void GraphicEngine::process() {
 
 	// on remplit la fenetre avec la couleur cree au debut de la fonction
 	Graphics::fill_screen(backgroundColor);
-
-	// on dessine un triangle
-	//engineManager->GetStateEngine()->GetSpaceShip()->displaySingularShip();
 		
 	for (list<DisplayObject*>::iterator it = displayObjectList.begin(); it != displayObjectList.end(); it++) {
 			(*it)->display();

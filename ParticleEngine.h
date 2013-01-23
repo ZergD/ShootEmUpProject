@@ -7,10 +7,11 @@
 #include "boost/generator_iterator.hpp"
 
 class ParticleEngine : public Engine {
-    std::list<Star*> StarList;
+    std::list<Star*> starList;
     EngineManager* engineManager;
     boost::random::mt19937 random;
-    boost::random::uniform_int_distribution<> generator;
+    boost::random::uniform_int_distribution<> generatorX;
+	boost::random::uniform_int_distribution<> generatorY;
 
 public:
     ParticleEngine(void);
@@ -19,5 +20,7 @@ public:
 
     void launch();
     void process();
+	void addStar(Star*);
+	void removeStar(Star*);
 };
 
