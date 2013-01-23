@@ -2,12 +2,17 @@
 #include "DisplayObject.h"
 #include "ComputeObject.h"
 
+#include "boost/random.hpp"
+#include "boost/generator_iterator.hpp"
+
 class EngineManager;
 
 class Star : public DisplayObject, public ComputeObject
 {
 	int positionX, positionY, size; //size = rayon de letoile
 	EngineManager* engineManager;
+	boost::random::mt19937 random;
+    boost::random::uniform_int_distribution<> generator;
 public:
 	//Constructeurs
 	Star(void);

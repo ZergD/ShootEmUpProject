@@ -28,6 +28,8 @@ Star::Star(EngineManager* engineManagerP) {
 
 Star::Star(EngineManager* engineManagerP, int X, int Y, int sizeArg) {
 	engineManager = engineManagerP;
+	random = *new boost::random::mt19937(std::time(0));
+	generator = *new boost::random::uniform_int_distribution<>(0, 11);
 	positionX = X;
 	positionY = Y;
 	size = sizeArg;
@@ -64,6 +66,7 @@ void Star::display() {
 void Star::compute() {
 	int vitesse = 1;
 
+	size = generator(random);
 	this->setPositionY(vitesse);
 }
 

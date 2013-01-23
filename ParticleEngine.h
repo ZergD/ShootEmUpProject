@@ -12,6 +12,7 @@ class ParticleEngine : public Engine {
     boost::random::mt19937 random;
     boost::random::uniform_int_distribution<> generatorX;
 	boost::random::uniform_int_distribution<> generatorY;
+	int amountOfStars;
 
 public:
     ParticleEngine(void);
