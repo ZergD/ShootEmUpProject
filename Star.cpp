@@ -4,12 +4,10 @@
 #include "graphics.h"
 #include "EngineManager.h"
 
-using namespace std;
-
 Star::Star(int X, int Y) {
 	positionX = X;
 	positionY = Y;
-	cout << "Star created.\n";
+	std::cout << "Star created.\n";
 }
 
 Star::Star(void){
@@ -26,14 +24,17 @@ Star::Star(EngineManager* engineManagerP) {
 	engineManager->GetStateEngine()->addComputeObject(this);
 }
 
-Star::Star(EngineManager* engineManagerP, int X, int Y, int sizeArg) {
+Star::Star(EngineManager* engineManagerP, int X, int Y) {
 	engineManager = engineManagerP;
 	random = *new boost::random::mt19937(std::time(0));
 	generatorSize1 = *new boost::random::uniform_int_distribution<>(0, 11);
 	generatorSize2 = *new boost::random::uniform_int_distribution<>(0, 5);
 	 
-	size = sizeArg;
-	if(sizeArg < 5) {
+	size = X % 12;
+	lifespan = X % 50;
+	std::cout << "my lifespan is: " << lifespan << "\n";
+	//we use the star s positionX (that was generated randomly) % 12 to decide the starType
+	if(size < 5) {
 		starType = 0;
 	}
 	else {
@@ -48,8 +49,9 @@ Star::Star(EngineManager* engineManagerP, int X, int Y, int sizeArg) {
 }
 
 Star::~Star(void){
-	engineManager->GetParticleEngine()->removeStar(this);
+	
 	engineManager->GetStateEngine()->removeComputeObject(this);
+	engineManager->GetParticleEngine()->removeStar(this);
 	engineManager->GetGraphicEngine()->removeObject(this);
 }
 
@@ -67,25 +69,28 @@ void Star::move(int dx, int dy) {
 }
 
 void Star::display() {
-	//Position Y, positionX = milieu de l etoile
+	//PositionY, positionX = milieu de l etoile
 	Graphics::draw_line(positionX - size, positionY, positionX + size, positionY, Graphics::build_color(250,250,250)); //ligne horizontale
 	Graphics::draw_line(positionX, positionY - size, positionX, positionY + size, Graphics::build_color(250,250,250)); //ligne verticale
 }
 
 void Star::compute() {
 	int vitesse;
-
+	
 	//flickering
 	if(starType == 0) { //cas ou l etoile est grande
 		size = generatorSize1(random);
 		vitesse = 2;
-		this->setPositionY(vitesse);
+		this->setPositionY(vitesse);		
 	} 
 	else { //cas ou l etoile est petite
 		size = generatorSize2(random);
 		vitesse = 1;
 		this->setPositionY(vitesse);
 	}
+
+	lifespan--;
+	liveOrDie();
 }
 
 
@@ -108,10 +113,16 @@ void Star::setPositionX(int vitesse) {
 
 void Star::setPositionY(int vitesse) {
 	if(positionY > HEIGHT)  {
-		delete(this);
+		//delete(this);
 	}
 	else {
 		positionY += vitesse;
+	}
+}
+
+void Star::liveOrDie() {
+	if(positionY > HEIGHT || lifespan <= 0) {
+		delete(this);
 	}
 }
 

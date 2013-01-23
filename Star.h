@@ -15,12 +15,13 @@ class Star : public DisplayObject, public ComputeObject
     boost::random::uniform_int_distribution<> generatorSize1;
 	boost::random::uniform_int_distribution<> generatorSize2;
 	int starType;
+	int lifespan;
 public:
 	//Constructeurs
 	Star(void);
 	Star(EngineManager*);
 	Star(int X, int Y);
-	Star(EngineManager*, int, int, int);
+	Star(EngineManager*, int, int);
 	
 	//Destructeur
 	~Star(void);
@@ -35,4 +36,6 @@ public:
 
 	void setPositionX(int X);
 	void setPositionY(int Y);
+
+	void liveOrDie();
 };
