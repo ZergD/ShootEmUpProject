@@ -19,7 +19,7 @@ ParticleEngine::ParticleEngine(EngineManager* engineManagerP) {
 
 	amountOfStars = 50;
 	generatorX = *new boost::random::uniform_int_distribution<>(1, WIDTH);
-	generatorY = *new boost::random::uniform_int_distribution<>(1, HEIGHT);
+	generatorY = *new boost::random::uniform_int_distribution<>(-10, HEIGHT);
 }
 
 void ParticleEngine::process() {

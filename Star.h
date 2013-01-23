@@ -12,7 +12,9 @@ class Star : public DisplayObject, public ComputeObject
 	int positionX, positionY, size; //size = rayon de letoile
 	EngineManager* engineManager;
 	boost::random::mt19937 random;
-    boost::random::uniform_int_distribution<> generator;
+    boost::random::uniform_int_distribution<> generatorSize1;
+	boost::random::uniform_int_distribution<> generatorSize2;
+	int starType;
 public:
 	//Constructeurs
 	Star(void);
