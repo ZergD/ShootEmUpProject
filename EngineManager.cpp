@@ -25,7 +25,7 @@ void EngineManager::start() {
 		for (std::list<Engine*>::iterator it = engineList.begin(); it != engineList.end(); it++) {
 			(*it)->process();
 		}		
-		boost::this_thread::sleep(boost::posix_time::milliseconds(1));
+		boost::this_thread::sleep(boost::posix_time::milliseconds(20));
 	}
 }
 

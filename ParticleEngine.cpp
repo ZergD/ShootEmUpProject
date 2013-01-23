@@ -29,7 +29,7 @@ void ParticleEngine::process() {
 		positionX = generatorX(random);
 		positionY = generatorY(random);
 		cout << "la positionX est: " << positionX << " et la positionY est: " << positionY << endl;
-		new Star(engineManager, positionX, positionY, 10);
+		new Star(engineManager, positionX, positionY);
 	}
 }
 

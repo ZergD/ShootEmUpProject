@@ -26,22 +26,25 @@ Star::Star(EngineManager* engineManagerP) {
 	engineManager->GetStateEngine()->addComputeObject(this);
 }
 
-Star::Star(EngineManager* engineManagerP, int X, int Y, int sizeArg) {
+Star::Star(EngineManager* engineManagerP, int X, int Y) {
 	engineManager = engineManagerP;
 	random = *new boost::random::mt19937(std::time(0));
 	generatorSize1 = *new boost::random::uniform_int_distribution<>(0, 11);
 	generatorSize2 = *new boost::random::uniform_int_distribution<>(0, 5);
 	
     starType = generatorSize1(random); 
+	//size = starType;
 	if(starType < 5) {
 		starType = 0;
+		size = starType;
 	}
 	else {
 		starType = 1;
+		size = generatorSize2(random);
 	}
+
 	positionX = X;
 	positionY = Y;
-	size = sizeArg;
 	engineManager->GetGraphicEngine()->addObject(this);
 	engineManager->GetStateEngine()->addComputeObject(this);
 	engineManager->GetParticleEngine()->addStar(this);
@@ -73,17 +76,19 @@ void Star::display() {
 }
 
 void Star::compute() {
-	int vitesse = 1;
-	int theDecider = generatorSize1(random);
+	int vitesse;
 
 	//flickering
-	if(starType == 0) {
+	if(starType == 0) { //cas ou l etoile est grande
 		size = generatorSize1(random);
+		vitesse = 2;
+		this->setPositionY(vitesse);
 	} 
-	else {
+	else { //cas ou l etoile est petite
 		size = generatorSize2(random);
+		vitesse = 1;
+		this->setPositionY(vitesse);
 	}
-	this->setPositionY(vitesse);
 }
 
 
