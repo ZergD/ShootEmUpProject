@@ -1,0 +1,22 @@
+Install SDL on Linux
+
+Install SDL using package management tool
+In ubuntu libsdl1.2-dev  is installed.
+
+Install Boost on Linux
+
+Install Boost using package management tool
+In ubuntu libboost-dev and libboost-regex-dev is installed.
+
+En plus de faire sa il faut installer
+
+libboost-system1.42-dev
+
+
+-----------------------------------
+
+aptitude install libsdl1.2-dev
+
+aptitude install libboost-dev libboost-regex-dev
+
+aptitude install libboost-system1.42-dev
