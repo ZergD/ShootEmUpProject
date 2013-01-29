@@ -59,8 +59,8 @@
 # The pre-processor and compiler options.
 MY_CFLAGS = `sdl-config --cflags`
 
-# The linker options.
-MY_LIBS   = `sdl-config --libs` -l:libboost_system.so.1.49.0 -l:libboost_thread.so.1.49.0
+# The linker options. je change le 49 par 42
+MY_LIBS   = `sdl-config --libs` -l:libboost_system.so.1.42.0 -l:libboost_thread.so.1.42.0
 
 # The pre-processor options used by the cpp (man cpp for more).
 CPPFLAGS  = -Wall
