@@ -7,7 +7,7 @@
 Star::Star(int X, int Y) {
 	positionX = X;
 	positionY = Y;
-	std::cout << "Star created.\n";
+	//std::cout << "Star created.\n";
 }
 
 Star::Star(void){
@@ -32,7 +32,7 @@ Star::Star(EngineManager* engineManagerP, int X, int Y) {
 	 
 	size = X % 12;
 	lifespan = X % 50;
-	std::cout << "my lifespan is: " << lifespan << "\n";
+	//std::cout << "my lifespan is: " << lifespan << "\n";
 	//we use the star s positionX (that was generated randomly) % 12 to decide the starType
 	if(size < 5) {
 		starType = 0;

@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include "EngineManager.h"
 #include "EnemySpaceShip.h"
 #include "graphics.h"
 #include "Shot.h"
@@ -20,8 +20,17 @@ void EnemySpaceShip::display() {
 }
 
 void EnemySpaceShip::compute() {
-	int vitesse = 5;
+	int vitesse = 2;
+    
+  /*this->setPositionX(vitesse);
+    this->setPositionY(vitesse);*/
 
-    this->setPositionX(vitesse);
-    this->setPositionY(vitesse);
+    if((positionX - engineManager->GetPlayerSpaceShip()->getPositionX()) > 0) 
+        this->setPositionX(-vitesse);
+    else 
+        this->setPositionX(vitesse);
+    if((positionY - engineManager->GetPlayerSpaceShip()->getPositionY()) > 0)
+        this->setPositionY(-vitesse);
+    else
+        this->setPositionY(vitesse);
 }

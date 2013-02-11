@@ -23,6 +23,7 @@ PlayerSpaceShip::~PlayerSpaceShip(void){
 
 void PlayerSpaceShip::display() {
 	Graphics::display_image(image, positionX - 50, positionY - 45);
+    std::cout << "playerSpaceShip has been created\n";
 }
 
 void PlayerSpaceShip::compute() {

@@ -1,8 +1,7 @@
 #include <boost/thread/thread.hpp>
 
 #include "EngineManager.h"
-#include "PlayerSpaceShip.h"
-#include "EnemySpaceShip.h"
+
 
 EngineManager::EngineManager(void) {
 	inputEngine = new InputEngine(this);
@@ -13,7 +12,7 @@ EngineManager::EngineManager(void) {
 	engineList.push_back(inputEngine);
 	engineList.push_back(stateEngine);
 	engineList.push_back(graphicEngine);
-	new PlayerSpaceShip(this);
+	playerSpaceShip = new PlayerSpaceShip(this);
     new EnemySpaceShip(this);
 }
 
@@ -49,4 +48,8 @@ NetworkEngine* EngineManager::GetNetworkEngine() {
 
 ParticleEngine* EngineManager::GetParticleEngine() {
 	return particleEngine;
+}
+
+PlayerSpaceShip* EngineManager::GetPlayerSpaceShip() {
+    return playerSpaceShip;
 }

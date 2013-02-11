@@ -40,4 +40,11 @@ void SpaceShip::setPositionY(int vitesse) {
 	}
 }
 
+int SpaceShip::getPositionX() {
+    return positionX;
+}
+
+int SpaceShip::getPositionY() {
+    return positionY;
+}
 //inline SpaceShip::~SpaceShip() {};
