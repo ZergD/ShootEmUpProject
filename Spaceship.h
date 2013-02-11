@@ -1,35 +1,29 @@
 #pragma once
-
-#include "DisplayObject.h"
 #include "ComputeObject.h"
-#include "time.h"
+#include "DisplayObject.h"
+#include <time.h>
 
 class EngineManager;
 
-class SpaceShip : public DisplayObject, public ComputeObject
+class SpaceShip : public ComputeObject, public DisplayObject
 {
-	int positionX, positionY;
-	time_t lastShootTime;
+protected:
+    int positionX, positionY;	
+    time_t lastShootTime;
 	EngineManager* engineManager;
 public:
-	//Constructeurs
-	SpaceShip(EngineManager*, int X, int Y);
-	SpaceShip(EngineManager*);
-	
-	//Destructeur
-	~SpaceShip(void);
 
-	//Methodes
-	bool youCanShoot();
-	void move(int dx, int dy);
-	void displaySingularShip();
-	void display();
-	void compute();
+    SpaceShip(EngineManager*);
+    virtual ~ SpaceShip(void);
 
-	int getPositionX();
-	int getPositionY();
+    	//Methodes
+	bool youCanShoot(); //implementer ici ds Spaceship.cpp
 
-	void setPositionX(int X);
-	void setPositionY(int Y);
+	int getPositionX(); //
+	int getPositionY();// pareil
+
+	void setPositionX(int X); //
+	void setPositionY(int Y);//
+
 };
-
+ //   inline SpaceShip::~SpaceShip() {};

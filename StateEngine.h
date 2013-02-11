@@ -3,13 +3,13 @@
 
 #include "Engine.h"
 #include "ComputeObject.h"
-#include "Spaceship.h"
+//#include "PlayerSpaceShip.h"
 
 class EngineManager;
 
 class StateEngine : public Engine
 {
-	SpaceShip* spaceShip;
+	//PlayerSpaceShip* PlayerSpaceShip;
 	EngineManager* engineManager;
 	std::list<ComputeObject*> computeObjectList;
 public:

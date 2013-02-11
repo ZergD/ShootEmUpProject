@@ -8,7 +8,6 @@ using namespace std;
 Shot::Shot(int X, int Y) {
 	positionX = X;
 	positionY = Y;
-	cout << "Shot created.\n";
 }
 
 Shot::Shot(void){

@@ -1,19 +1,20 @@
 #include <boost/thread/thread.hpp>
 
 #include "EngineManager.h"
-#include "Spaceship.h"
+#include "PlayerSpaceShip.h"
+#include "EnemySpaceShip.h"
 
 EngineManager::EngineManager(void) {
 	inputEngine = new InputEngine(this);
 	stateEngine = new StateEngine(this);
 	graphicEngine = new GraphicEngine(this);
-	networkEngine = new NetworkEngine(this);
 	particleEngine = new ParticleEngine(this);
 	engineList.push_front(particleEngine);
 	engineList.push_back(inputEngine);
 	engineList.push_back(stateEngine);
 	engineList.push_back(graphicEngine);
-	new SpaceShip(this);
+	new PlayerSpaceShip(this);
+    new EnemySpaceShip(this);
 }
 
 EngineManager::~EngineManager(void) {

@@ -1,73 +1,20 @@
-#include <iostream>
-
-#include "Spaceship.h"
+#include "SpaceShip.h"
 #include "graphics.h"
 #include "EngineManager.h"
-#include "Shot.h"
 
-SDL_Surface *image = NULL;
-
-SpaceShip::SpaceShip(EngineManager* engineManagerP, int X, int Y) : engineManager(engineManagerP) {
-	positionX = X;
-	positionY = Y;
-	cout << "SpaceShip created.\n";
-}
-
-SpaceShip::SpaceShip(EngineManager* engineManagerP) : engineManager(engineManagerP) {
-	time(&lastShootTime);
+SpaceShip::SpaceShip(EngineManager* engineManagerP) {
+    engineManager = engineManagerP;
+    time(&lastShootTime);
 	positionX = WIDTH / 2;
 	positionY = HEIGHT / 2;
-	if (image == NULL) {
-		image = SDL_LoadBMP("Images/SpaceShip.bmp");
-	}
-	engineManager->GetGraphicEngine()->addObject(this);
+    
+    engineManager->GetGraphicEngine()->addObject(this);
 	engineManager->GetStateEngine()->addComputeObject(this);
 }
 
-SpaceShip::~SpaceShip(void){
-}
-
-void SpaceShip::move(int dx, int dy) {
-	if((positionX + dx + 25) > WIDTH && (positionX + dx - 25) < 0) {
-		positionX += dx;
-	}
-	if((positionY + dy) > HEIGHT && (positionY + dy - 100) < 0) {
-		positionY += dy;
-	}
-}
-
-void SpaceShip::displaySingularShip () {
-	Graphics::fill_triangle(positionX + 25 , positionY ,
-			      positionX - 25 , positionY ,
-				  positionX      , positionY - 100,
-				  Graphics::build_color(250, 250, 250));
-}
-
-void SpaceShip::display() {
-	Graphics::display_image(image, positionX - 50, positionY - 45);
-}
-
-void SpaceShip::compute() {
-	int vitesse = 10;
-
-	if(engineManager->GetInputEngine()->GetToucheAppuyeeUp()) {
-		this->setPositionY(-vitesse);
-	}
-	if(engineManager->GetInputEngine()->GetToucheAppuyeeDown()) {
-		this->setPositionY(vitesse);
-	}
-	if(engineManager->GetInputEngine()->GetToucheAppuyeeLeft()) {
-		this->setPositionX(-vitesse);
-	}
-	if(engineManager->GetInputEngine()->GetToucheAppuyeeRight()) {
-		this->setPositionX(vitesse);
-	}
-	if(engineManager->GetInputEngine()->GetToucheAppuyeeSpaceBar() && youCanShoot()) {
-		new Shot(engineManager, positionX + 10, positionY - 45);
-		new Shot(engineManager, positionX - 10, positionY - 45);
-		new Shot(engineManager, positionX + 25, positionY - 45);
-		new Shot(engineManager, positionX - 25, positionY - 45);
-	}
+SpaceShip::~SpaceShip(void) {
+    engineManager->GetGraphicEngine()->removeObject(this);
+    engineManager->GetStateEngine()->removeComputeObject(this);
 }
 
 bool SpaceShip::youCanShoot() {
@@ -81,24 +28,16 @@ bool SpaceShip::youCanShoot() {
 	return false;
 }
 
-int SpaceShip::getPositionX() {
-	return positionX;
-}
-
-int SpaceShip::getPositionY() {
-	return positionY;
-}
-
 void SpaceShip::setPositionX(int vitesse) {
-	if((positionX + vitesse + 50) < WIDTH && (positionX + vitesse - 50) > 0) {
+    if((positionX + vitesse + 50) < WIDTH && (positionX + vitesse - 50) > 0) {
 		positionX += vitesse;
 	}
-} 
+}
 
 void SpaceShip::setPositionY(int vitesse) {
-	if((positionY + vitesse + 45 < HEIGHT) && ((positionY + vitesse - 45) > 0)) {
+    if((positionY + vitesse + 45 < HEIGHT) && ((positionY + vitesse - 45) > 0)) {
 		positionY += vitesse;
 	}
 }
 
-
+//inline SpaceShip::~SpaceShip() {};

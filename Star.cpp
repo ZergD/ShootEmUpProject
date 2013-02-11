@@ -77,7 +77,7 @@ void Star::display() {
 void Star::compute() {
 	int vitesse;
 	
-	//flickering
+	//twinkling
 	if(starType == 0) { //cas ou l etoile est grande
 		size = generatorSize1(random);
 		vitesse = 2;
