@@ -12,5 +12,11 @@ public:
     //Methodes
     void display();
     void compute();
+    bool isAbove();
+    bool isBelow();
+    bool isLeft();
+    bool isRight();
+    bool sameXAxis();
+    bool sameYAxis();
 };
 

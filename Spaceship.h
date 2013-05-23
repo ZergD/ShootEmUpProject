@@ -24,6 +24,7 @@ public:
 
 	void setPositionX(int X); //
 	void setPositionY(int Y);//
+    virtual void display() = 0;
 
 };
  //   inline SpaceShip::~SpaceShip() {};

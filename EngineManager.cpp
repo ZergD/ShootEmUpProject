@@ -7,13 +7,13 @@ EngineManager::EngineManager(void) {
 	inputEngine = new InputEngine(this);
 	stateEngine = new StateEngine(this);
 	graphicEngine = new GraphicEngine(this);
-	particleEngine = new ParticleEngine(this);
-	engineList.push_front(particleEngine);
+	//particleEngine = new ParticleEngine(this);
+	//engineList.push_front(particleEngine);
 	engineList.push_back(inputEngine);
 	engineList.push_back(stateEngine);
 	engineList.push_back(graphicEngine);
 	playerSpaceShip = new PlayerSpaceShip(this);
-    new EnemySpaceShip(this);
+    //new EnemySpaceShip(this);
 }
 
 EngineManager::~EngineManager(void) {
@@ -25,7 +25,8 @@ void EngineManager::start() {
 		for (std::list<Engine*>::iterator it = engineList.begin(); it != engineList.end(); it++) {
 			(*it)->process();
 		}		
-		boost::this_thread::sleep(boost::posix_time::milliseconds(20));
+		boost::this_thread::sleep(boost::posix_time::milliseconds(100));
+        //20
 	}
 }
 
@@ -40,10 +41,6 @@ StateEngine* EngineManager::GetStateEngine() {
 
 GraphicEngine* EngineManager::GetGraphicEngine() {
 	return graphicEngine;
-}
-
-NetworkEngine* EngineManager::GetNetworkEngine() {
-	return networkEngine;
 }
 
 ParticleEngine* EngineManager::GetParticleEngine() {

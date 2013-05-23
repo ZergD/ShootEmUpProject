@@ -22,8 +22,8 @@ PlayerSpaceShip::~PlayerSpaceShip(void){
 }
 
 void PlayerSpaceShip::display() {
-	Graphics::display_image(image, positionX - 50, positionY - 45);
-    std::cout << "playerSpaceShip has been created\n";
+	//Graphics::display_image(image, positionX - 50, positionY - 45);
+    engineManager->GetGraphicEngine()->displayImage(image, positionX - 50, positionY - 45);
 }
 
 void PlayerSpaceShip::compute() {
@@ -41,10 +41,10 @@ void PlayerSpaceShip::compute() {
 	if(engineManager->GetInputEngine()->GetToucheAppuyeeRight()) {
 		this->setPositionX(vitesse);
 	}
-	if(engineManager->GetInputEngine()->GetToucheAppuyeeSpaceBar() && youCanShoot()) {
+	/*if(engineManager->GetInputEngine()->GetToucheAppuyeeSpaceBar() && youCanShoot()) {
 		new Shot(engineManager, positionX + 10, positionY - 45);
 		new Shot(engineManager, positionX - 10, positionY - 45);
 		new Shot(engineManager, positionX + 25, positionY - 45);
 		new Shot(engineManager, positionX - 25, positionY - 45);
-	}
+	}*/
 }

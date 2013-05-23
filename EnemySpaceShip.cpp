@@ -24,13 +24,58 @@ void EnemySpaceShip::compute() {
     
   /*this->setPositionX(vitesse);
     this->setPositionY(vitesse);*/
+  /*  if(sameYAxis()) {
+        if(isAbove()) {
+            this->setPositionY(-vitesse);
+            return;
+        }
+        else {
+            this->setPositionY(vitesse);
+            return;
+        }
+    }
 
-    if((positionX - engineManager->GetPlayerSpaceShip()->getPositionX()) > 0) 
+    if(sameXAxis()) {
+        if(isRight()){
+            this->setPositionX(vitesse);
+            return;
+        }
+        else {
+            this->setPositionX(-vitesse);
+            return;
+        }
+    }*/
+   if(isLeft()) 
         this->setPositionX(-vitesse);
     else 
         this->setPositionX(vitesse);
-    if((positionY - engineManager->GetPlayerSpaceShip()->getPositionY()) > 0)
+    if(isAbove())
         this->setPositionY(-vitesse);
     else
-        this->setPositionY(vitesse);
+        this->setPositionY(vitesse);   
+}
+
+//l enemi se situe vis à vis du playerSpaceShip
+bool EnemySpaceShip::isLeft() {
+    return ((positionX - engineManager->GetPlayerSpaceShip()->getPositionX()) > 0);
+}
+
+bool EnemySpaceShip::isRight() {
+    return ((positionX - engineManager->GetPlayerSpaceShip()->getPositionX()) < 0);
+}
+
+bool EnemySpaceShip::isBelow() {
+    return ((positionY - engineManager->GetPlayerSpaceShip()->getPositionY()) < 0);
+}
+
+bool EnemySpaceShip::isAbove() {
+    return ((positionY - engineManager->GetPlayerSpaceShip()->getPositionY()) > 0);
+}
+
+bool EnemySpaceShip::sameXAxis() {
+    return (positionX == engineManager->GetPlayerSpaceShip()->getPositionX());
+}
+
+bool EnemySpaceShip::sameYAxis() {
+    return (positionY == engineManager->GetPlayerSpaceShip()->getPositionY());
 }

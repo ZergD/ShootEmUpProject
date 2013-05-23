@@ -2,17 +2,21 @@
 #include "Engine.h"
 #include "DisplayObject.h"
 #include <list>
+#include "SDL.h"
+#include "SDL_image.h"
+#include <iostream>
 
 using namespace std;
 
 class EngineManager;
 
 class GraphicEngine : public Engine {
-	
+private:	
 	EngineManager* engineManager;
 	list<DisplayObject*> displayObjectList;
-
-	Uint8 backgroundColor;
+    int height, width;
+    SDL_Surface* screen;
+    SDL_Surface* background;
 
 public:
 
@@ -24,6 +28,7 @@ public:
 
 	void addObject(DisplayObject*);
 	void removeObject(DisplayObject*);
-
+    void displayImage(SDL_Surface*, int, int);
+    void loadBackground();
 };
 
