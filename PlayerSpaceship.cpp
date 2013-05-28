@@ -2,20 +2,20 @@
 
 #include "EngineManager.h"
 #include "PlayerSpaceShip.h"
-#include "graphics.h"
 #include "Shot.h"
 
-SDL_Surface *image = NULL;
                                                                   //le constructeur du SpaceShip s exec avant PlayerSpaceShip
 PlayerSpaceShip::PlayerSpaceShip(EngineManager* engineManagerP) : SpaceShip(engineManagerP) {
 /*	time(&lastShootTime);
 	positionX = WIDTH / 2;
 	positionY = HEIGHT / 2;*/
 	if (image == NULL) {
-		image = SDL_LoadBMP("Images/SpaceShip.bmp");
-	}
-/*  engineManager->GetGraphicEngine()->addObject(this);
-	engineManager->GetStateEngine()->addComputeObject(this); */
+		//image = SDL_LoadBMP("Images/SpaceShip1.bmp");
+	    image = IMG_Load("Images/SpaceShip1.png");
+    }
+/*  
+    engineManager->GetGraphicEngine()->addObject(this);
+   engineManager->GetStateEngine()->addComputeObject(this); */
 }
 
 PlayerSpaceShip::~PlayerSpaceShip(void){
@@ -27,7 +27,7 @@ void PlayerSpaceShip::display() {
 }
 
 void PlayerSpaceShip::compute() {
-	int vitesse = 10;
+	int vitesse = 15;
 
 	if(engineManager->GetInputEngine()->GetToucheAppuyeeUp()) {
 		this->setPositionY(-vitesse);

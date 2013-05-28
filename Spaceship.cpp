@@ -7,7 +7,7 @@ SpaceShip::SpaceShip(EngineManager* engineManagerP) {
     time(&lastShootTime);
 	positionX = WIDTH / 2;
 	positionY = HEIGHT / 2;
-    
+    image = NULL;
     engineManager->GetGraphicEngine()->addObject(this);
 	engineManager->GetStateEngine()->addComputeObject(this);
 }
@@ -15,6 +15,7 @@ SpaceShip::SpaceShip(EngineManager* engineManagerP) {
 SpaceShip::~SpaceShip(void) {
     engineManager->GetGraphicEngine()->removeObject(this);
     engineManager->GetStateEngine()->removeComputeObject(this);
+    SDL_FreeSurface(image);
 }
 
 bool SpaceShip::youCanShoot() {

@@ -2,6 +2,7 @@
 #include "SpaceShip.h"
 #include "time.h"
 
+
 class EngineManager;
 
 class PlayerSpaceShip : public SpaceShip
@@ -17,5 +18,7 @@ public:
 
 	void display();
 	void compute();
+
+
 };
 

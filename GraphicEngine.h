@@ -9,6 +9,7 @@
 using namespace std;
 
 class EngineManager;
+class Image;
 
 class GraphicEngine : public Engine {
 private:	
@@ -17,6 +18,8 @@ private:
     int height, width;
     SDL_Surface* screen;
     SDL_Surface* background;
+    Image* img;
+    bool backgroundFirstIteration;
 
 public:
 
