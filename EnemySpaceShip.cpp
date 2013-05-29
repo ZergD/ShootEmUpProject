@@ -8,15 +8,12 @@ EnemySpaceShip::EnemySpaceShip(EngineManager* engineManagerP) : SpaceShip(engine
     
     positionX = WIDTH / 2 + 100;
 	positionY = HEIGHT / 2;
+    if (image == NULL) {
+	    image = IMG_Load("Images/SpaceShip_Red.png");
+    }
 }
 
 EnemySpaceShip::~EnemySpaceShip(void){
-}
-
-void EnemySpaceShip::display() {
-	//Graphics::display_image(image, positionX - 50, positionY - 45);
-    std::cout << "enemySpaceShip has been created\n";
-    Graphics::fill_circle(positionX, positionY, 20, Graphics::build_color(204,0,0));
 }
 
 void EnemySpaceShip::compute() {
@@ -78,4 +75,10 @@ bool EnemySpaceShip::sameXAxis() {
 
 bool EnemySpaceShip::sameYAxis() {
     return (positionY == engineManager->GetPlayerSpaceShip()->getPositionY());
+}
+
+void EnemySpaceShip::display() {
+	//Graphics::display_image(image, positionX - 50, positionY - 45);
+    std::cout << "enemySpaceShip has been displayed\n";
+    engineManager->GetGraphicEngine()->displayImage(image, positionX, positionY);
 }

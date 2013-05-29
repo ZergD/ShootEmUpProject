@@ -10,12 +10,8 @@ PlayerSpaceShip::PlayerSpaceShip(EngineManager* engineManagerP) : SpaceShip(engi
 	positionX = WIDTH / 2;
 	positionY = HEIGHT / 2;*/
 	if (image == NULL) {
-		//image = SDL_LoadBMP("Images/SpaceShip1.bmp");
-	    image = IMG_Load("Images/SpaceShip1.png");
+	    image = IMG_Load("Images/SpaceShip_Blue.png");
     }
-/*  
-    engineManager->GetGraphicEngine()->addObject(this);
-   engineManager->GetStateEngine()->addComputeObject(this); */
 }
 
 PlayerSpaceShip::~PlayerSpaceShip(void){

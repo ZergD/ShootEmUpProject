@@ -12,6 +12,7 @@ class Image : public DisplayObject {
 
 public:
     Image(EngineManager*,SDL_Surface*);
+    Image(EngineManager*,SDL_Surface*, int, int);
     ~Image(void);
 
     void display();
@@ -20,4 +21,5 @@ public:
 protected:
     EngineManager* engineManager;
     SDL_Surface* sdl_surface;
+    int positionX, positionY;
 };
