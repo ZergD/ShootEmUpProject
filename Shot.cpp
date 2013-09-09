@@ -1,6 +1,5 @@
 #include "Shot.h"
 #include <iostream>
-#include "graphics.h"
 #include "EngineManager.h"
 
 using namespace std;
@@ -11,8 +10,8 @@ Shot::Shot(int X, int Y) {
 }
 
 Shot::Shot(void){
-	positionX = WIDTH / 2;
-	positionY = HEIGHT / 2;
+	positionX = engineManager->GetGraphicEngine()->getWidth() / 2;
+	positionY = engineManager->GetGraphicEngine()->getHeight() / 2;
 }
 
 Shot::Shot(EngineManager* engineManagerP, int X, int Y) {
@@ -30,18 +29,18 @@ Shot::~Shot(void){
 }
 
 void Shot::move(int dx, int dy) {
-	if((positionX + dx + 25) > WIDTH && (positionX + dx - 25) < 0) {
+	if((positionX + dx + 25) > engineManager->GetGraphicEngine()->getWidth() && (positionX + dx - 25) < 0) {
 		positionX += dx;
 	}
-	if((positionY + dy) > HEIGHT && (positionY + dy - 100) < 0) {
+	if((positionY + dy) > engineManager->GetGraphicEngine()->getHeight() && (positionY + dy - 100) < 0) {
 		positionY += dy;
 	}
 }
 
 void Shot::display() {
-	Graphics::draw_line(positionX,positionY, positionX, positionY + longueur, Graphics::build_color(250, 250, 250));
-	Graphics::draw_line(positionX + 1,positionY, positionX + 1, positionY + longueur, Graphics::build_color(250, 250, 250));
-	Graphics::draw_line(positionX - 1,positionY, positionX - 1, positionY + longueur, Graphics::build_color(250, 250, 250));
+	//Graphics::draw_line(positionX,positionY, positionX, positionY + longueur, Graphics::build_color(250, 250, 250));
+	//Graphics::draw_line(positionX + 1,positionY, positionX + 1, positionY + longueur, Graphics::build_color(250, 250, 250));
+	//Graphics::draw_line(positionX - 1,positionY, positionX - 1, positionY + longueur, Graphics::build_color(250, 250, 250));
 }
 
 void Shot::compute() {
@@ -60,7 +59,7 @@ int Shot::getPositionY() {
 }
 
 void Shot::setPositionX(int vitesse) {
-	if((positionX + vitesse + 25) > WIDTH || (positionX + vitesse - 25) < 0) {
+	if((positionX + vitesse + 25) > engineManager->GetGraphicEngine()->getWidth() || (positionX + vitesse - 25) < 0) {
 	
 	}
 	else {
@@ -69,7 +68,7 @@ void Shot::setPositionX(int vitesse) {
 } 
 
 void Shot::setPositionY(int vitesse) {
-	if(positionY < 0 || positionY > HEIGHT)  {
+	if(positionY < 0 || positionY > engineManager->GetGraphicEngine()->getHeight())  {
 		delete(this);
 	}
 	else {

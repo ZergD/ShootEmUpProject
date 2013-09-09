@@ -5,10 +5,9 @@
 GraphicEngine::GraphicEngine(EngineManager* EngineManagerP) {
 	engineManager = EngineManagerP;
     backgroundFirstIteration = true;
-    width = 800; height = 600;
+    width = 920; height = 640;
     SDL_Init(SDL_INIT_VIDEO);
 	screen = SDL_SetVideoMode(width, height, 32, SDL_HWSURFACE);
-    //this->loadBackground();
 
     int flags = IMG_INIT_JPG|IMG_INIT_PNG;
     int initted = IMG_Init(flags);
@@ -19,7 +18,6 @@ GraphicEngine::GraphicEngine(EngineManager* EngineManagerP) {
     if(!background){
         cout << "IMG_Load: " << IMG_GetError() << "\n";
     }
-    //img = new Image(engineManager, background);
 }
 
 GraphicEngine::~GraphicEngine(void) {
@@ -62,31 +60,27 @@ void GraphicEngine::loadBackground(){
 }
 
 void GraphicEngine::process() {
-	// on verrouille l'ecran /
-	//Graphics::lock();
-
     SDL_WM_SetCaption("ShootEmUp", NULL); // titre de notre fenetre
     
-    // on remplit la fenetre avec une couleur
+    // on remplit la fenetre avec couleur noir
     SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0, 0, 0));
-    //this->displayImage("Images/")
 
-    if(backgroundFirstIteration){
+    if(backgroundFirstIteration){ // on affiche le fond juste une fois
         img = new Image(engineManager, background);
         backgroundFirstIteration = false;
     }
-
-   // this->loadBackground();
 
 	for (list<DisplayObject*>::iterator it = displayObjectList.begin(); it != displayObjectList.end(); it++) {
 			(*it)->display();
 	}
 
     SDL_Flip(screen);
+}
 
-	// on deverouille et on rafraichit l'ecran
-    //Graphics::unlock();
+int GraphicEngine::getHeight(){
+	return height;
+}
 
-	//on attend le temps necessaire pour atteindre le taux de rafraichissement souhaite
-	//Graphics::sync();
+int GraphicEngine::getWidth(){
+	return width;
 }

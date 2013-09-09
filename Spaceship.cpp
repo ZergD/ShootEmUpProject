@@ -1,12 +1,11 @@
 #include "SpaceShip.h"
-#include "graphics.h"
 #include "EngineManager.h"
 
 SpaceShip::SpaceShip(EngineManager* engineManagerP) {
     engineManager = engineManagerP;
     time(&lastShootTime);
-	positionX = WIDTH / 2;
-	positionY = HEIGHT / 2;
+	positionX = engineManager->GetGraphicEngine()->getWidth() / 2;
+	positionY = engineManager->GetGraphicEngine()->getHeight() / 2;
     image = NULL;
     engineManager->GetGraphicEngine()->addObject(this);
 	engineManager->GetStateEngine()->addComputeObject(this);
@@ -30,13 +29,13 @@ bool SpaceShip::youCanShoot() {
 }
 
 void SpaceShip::setPositionX(int vitesse) {
-    if((positionX + vitesse + 50) < WIDTH && (positionX + vitesse - 50) > 0) {
+    if((positionX + vitesse + 40) < engineManager->GetGraphicEngine()->getWidth() && (positionX + vitesse - 40) > 0) {
 		positionX += vitesse;
 	}
 }
 
 void SpaceShip::setPositionY(int vitesse) {
-    if((positionY + vitesse + 45 < HEIGHT) && ((positionY + vitesse - 45) > 0)) {
+    if((positionY + vitesse + 35 < engineManager->GetGraphicEngine()->getHeight()) && ((positionY + vitesse - 35) > 0)) {
 		positionY += vitesse;
 	}
 }

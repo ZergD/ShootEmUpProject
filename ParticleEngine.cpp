@@ -1,5 +1,5 @@
 #include "ParticleEngine.h"
-#include "graphics.h"
+#include "EngineManager.h"
 
 using namespace std;
 
@@ -18,8 +18,8 @@ ParticleEngine::ParticleEngine(EngineManager* engineManagerP) {
 	engineManager = engineManagerP;
 
 	amountOfStars = 50;
-	generatorX = *new boost::random::uniform_int_distribution<>(1, WIDTH);
-	generatorY = *new boost::random::uniform_int_distribution<>(-10, HEIGHT);
+	generatorX = *new boost::random::uniform_int_distribution<>(1, engineManager->GetGraphicEngine()->getWidth());
+	generatorY = *new boost::random::uniform_int_distribution<>(-10, engineManager->GetGraphicEngine()->getHeight());
 }
 
 void ParticleEngine::process() {

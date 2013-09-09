@@ -33,5 +33,6 @@ public:
 	void removeObject(DisplayObject*);
     void displayImage(SDL_Surface*, int, int);
     void loadBackground();
+	int getHeight();
+	int getWidth();
 };
-

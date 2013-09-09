@@ -1,7 +1,6 @@
 #include <iostream>
 
 #include "Star.h"
-#include "graphics.h"
 #include "EngineManager.h"
 
 Star::Star(int X, int Y) {
@@ -11,8 +10,8 @@ Star::Star(int X, int Y) {
 }
 
 Star::Star(void){
-	positionX = WIDTH / 2;
-	positionY = HEIGHT / 2;
+	positionX = engineManager->GetGraphicEngine()->getWidth() / 2;
+	positionY = engineManager->GetGraphicEngine()->getHeight() / 2;
 }
 
 Star::Star(EngineManager* engineManagerP) {	
@@ -56,10 +55,10 @@ Star::~Star(void){
 }
 
 void Star::move(int dx, int dy) {
-	if((positionX + dx + 25) < WIDTH || (positionX + dx - 25) > 0) {
+	if((positionX + dx + 25) < engineManager->GetGraphicEngine()->getWidth() || (positionX + dx - 25) > 0) {
 		positionX;
 	}
-	else if((positionY + dy) < HEIGHT || (positionY + dy - 100) > 0) {
+	else if((positionY + dy) < engineManager->GetGraphicEngine()->getHeight() || (positionY + dy - 100) > 0) {
 		positionY;
 	}
 	else {
@@ -70,8 +69,8 @@ void Star::move(int dx, int dy) {
 
 void Star::display() {
 	//PositionY, positionX = milieu de l etoile
-	Graphics::draw_line(positionX - size, positionY, positionX + size, positionY, Graphics::build_color(250,250,250)); //ligne horizontale
-	Graphics::draw_line(positionX, positionY - size, positionX, positionY + size, Graphics::build_color(250,250,250)); //ligne verticale
+	//Graphics::draw_line(positionX - size, positionY, positionX + size, positionY, Graphics::build_color(250,250,250)); //ligne horizontale
+	//Graphics::draw_line(positionX, positionY - size, positionX, positionY + size, Graphics::build_color(250,250,250)); //ligne verticale
 }
 
 void Star::compute() {
@@ -103,7 +102,7 @@ int Star::getPositionY() {
 }
 
 void Star::setPositionX(int vitesse) {
-	if((positionX + vitesse + 25) > WIDTH || (positionX + vitesse - 25) < 0) {
+	if((positionX + vitesse + 25) > engineManager->GetGraphicEngine()->getWidth() || (positionX + vitesse - 25) < 0) {
 	
 	}
 	else {
@@ -112,7 +111,7 @@ void Star::setPositionX(int vitesse) {
 } 
 
 void Star::setPositionY(int vitesse) {
-	if(positionY > HEIGHT)  {
+	if(positionY > engineManager->GetGraphicEngine()->getHeight())  {
 		//delete(this);
 	}
 	else {
@@ -121,7 +120,7 @@ void Star::setPositionY(int vitesse) {
 }
 
 void Star::liveOrDie() {
-	if(positionY > HEIGHT || lifespan <= 0) {
+	if(positionY > engineManager->GetGraphicEngine()->getHeight() || lifespan <= 0) {
 		delete(this);
 	}
 }
