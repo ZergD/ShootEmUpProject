@@ -9,6 +9,7 @@ EnemySpaceShip::EnemySpaceShip(EngineManager* engineManagerP) : SpaceShip(engine
 	positionX = engineManager->GetGraphicEngine()->getWidth() / 2 + 100;
 	positionY = engineManager->GetGraphicEngine()->getHeight() / 2;
     if (image == NULL) {
+
 	    image = IMG_Load("Images/SpaceShip_Red.png");
     }
 }
@@ -54,5 +55,5 @@ bool EnemySpaceShip::sameYAxis() {
 void EnemySpaceShip::display() {
 	//Graphics::display_image(image, positionX - 50, positionY - 45);
     //std::cout << "enemySpaceShip has been displayed\n";
-    engineManager->GetGraphicEngine()->displayImage(image, positionX, positionY);
+    engineManager->GetGraphicEngine()->displayImage(image, positionX - 50, positionY - 45);
 }

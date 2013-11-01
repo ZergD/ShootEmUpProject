@@ -13,7 +13,7 @@ EngineManager::EngineManager(void) {
 	engineList.push_back(stateEngine);
 	engineList.push_back(graphicEngine);
 	playerSpaceShip = new PlayerSpaceShip(this);
-    new EnemySpaceShip(this);
+    //new EnemySpaceShip(this);
 }
 
 EngineManager::~EngineManager(void) {
