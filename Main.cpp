@@ -5,8 +5,8 @@
 using namespace std;
 
 int main(int argc, char * argv[]) {
-	EngineManager* engineManager = new EngineManager();
-	engineManager->start();	
+	//EngineManager* engineManager = new EngineManager();
+	//engineManager->start();	
 
 	ShootEmUp* shootEmUp = new ShootEmUp();
 	shootEmUp->launch();

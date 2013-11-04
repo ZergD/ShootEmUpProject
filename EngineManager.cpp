@@ -3,7 +3,7 @@
 #include "EngineManager.h"
 
 
-EngineManager::EngineManager(void) {
+EngineManager::EngineManager(ShootEmUp* shootemupP) {
 	inputEngine = new InputEngine(this);
 	stateEngine = new StateEngine(this);
 	graphicEngine = new GraphicEngine(this);
@@ -14,6 +14,7 @@ EngineManager::EngineManager(void) {
 	engineList.push_back(graphicEngine);
 	playerSpaceShip = new PlayerSpaceShip(this);
     //new EnemySpaceShip(this);
+	shootEmUp = shootemupP;
 }
 
 EngineManager::~EngineManager(void) {
@@ -21,13 +22,13 @@ EngineManager::~EngineManager(void) {
 }
 
 void EngineManager::start() {
-	while(inputEngine->GetDisplay()) {
+	//while(inputEngine->GetDisplay()) {
 		for (std::list<Engine*>::iterator it = engineList.begin(); it != engineList.end(); it++) {
 			(*it)->process();
 		}		
-		boost::this_thread::sleep(boost::posix_time::milliseconds(20));
+		//boost::this_thread::sleep(boost::posix_time::milliseconds(20));
         //20
-	}
+	//}
 }
 
 //Getters
@@ -49,4 +50,8 @@ ParticleEngine* EngineManager::GetParticleEngine() {
 
 PlayerSpaceShip* EngineManager::GetPlayerSpaceShip() {
     return playerSpaceShip;
+}
+
+ShootEmUp* EngineManager::getShootEmUp(){
+	return shootEmUp;
 }
