@@ -4,6 +4,7 @@
 
 
 EngineManager::EngineManager(ShootEmUp* shootemupP) {
+	shootEmUp = shootemupP;
 	inputEngine = new InputEngine(this);
 	stateEngine = new StateEngine(this);
 	graphicEngine = new GraphicEngine(this);
@@ -12,9 +13,8 @@ EngineManager::EngineManager(ShootEmUp* shootemupP) {
 	engineList.push_back(inputEngine);
 	engineList.push_back(stateEngine);
 	engineList.push_back(graphicEngine);
-	playerSpaceShip = new PlayerSpaceShip(this);
+	//playerSpaceShip = new PlayerSpaceShip(this);
     //new EnemySpaceShip(this);
-	shootEmUp = shootemupP;
 }
 
 EngineManager::~EngineManager(void) {

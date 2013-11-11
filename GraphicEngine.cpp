@@ -9,15 +9,15 @@ GraphicEngine::GraphicEngine(EngineManager* EngineManagerP) {
     SDL_Init(SDL_INIT_VIDEO);
 	screen = SDL_SetVideoMode(width, height, 32, SDL_HWSURFACE);
 
-    int flags = IMG_INIT_JPG|IMG_INIT_PNG;
-    int initted = IMG_Init(flags);
-    if((initted&flags) != flags){
-        cout << "error failed to init required jpg and pnj support\n";
-    }
-    background = IMG_Load("Images/nebula_top3.png");
-    if(!background){
-        cout << "IMG_Load: " << IMG_GetError() << "\n";
-    }
+    //int flags = IMG_INIT_JPG|IMG_INIT_PNG;
+    //int initted = IMG_Init(flags);
+    //if((initted&flags) != flags){
+    //    cout << "error failed to init required jpg and pnj support\n";
+    //}
+    //background = IMG_Load("Images/nebula_top3.png");
+    //if(!background){
+    //    cout << "IMG_Load: " << IMG_GetError() << "\n";
+    //}
 }
 
 GraphicEngine::~GraphicEngine(void) {
@@ -45,7 +45,7 @@ void GraphicEngine::removeObject(DisplayObject* displayObject) {
 }
 
 void GraphicEngine::loadBackground(){
-    int flags = IMG_INIT_JPG|IMG_INIT_PNG;
+/*    int flags = IMG_INIT_JPG|IMG_INIT_PNG;
     int initted = IMG_Init(flags);
     if((initted&flags) != flags){
         cout << "error failed to init required jpg and pnj support\n";
@@ -56,7 +56,7 @@ void GraphicEngine::loadBackground(){
     }
     if (SDL_BlitSurface(background,NULL,screen,NULL) == -1 ){
         cout<<"Couldnt do background blittingInsideLoad " << endl;
-    }
+    }*/
 }
 
 void GraphicEngine::process() {
@@ -65,10 +65,10 @@ void GraphicEngine::process() {
     // on remplit la fenetre avec couleur noir
     SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0, 0, 0));
 
-    if(backgroundFirstIteration){ // on affiche le fond juste une fois
-        img = new Image(engineManager, background);
-        backgroundFirstIteration = false;
-    }
+    //if(backgroundFirstIteration){ // on affiche le fond juste une fois
+    //    img = new Image(engineManager, background);
+    //    backgroundFirstIteration = false;
+    //}
 
 	for (list<DisplayObject*>::iterator it = displayObjectList.begin(); it != displayObjectList.end(); it++) {
 			(*it)->display();
