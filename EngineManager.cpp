@@ -3,8 +3,8 @@
 #include "EngineManager.h"
 
 
-EngineManager::EngineManager(ShootEmUp* shootemupP) {
-	shootEmUp = shootemupP;
+EngineManager::EngineManager(ShootEmUp* shootEmUpP) {
+	shootEmUp = shootEmUpP;
 	inputEngine = new InputEngine(this);
 	stateEngine = new StateEngine(this);
 	graphicEngine = new GraphicEngine(this);

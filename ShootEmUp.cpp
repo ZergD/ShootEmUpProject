@@ -29,3 +29,7 @@ EngineManager* ShootEmUp::getEngineManager() {
 StateManager* ShootEmUp::getStateManager() {
     return stateManager;
 }
+
+SDL_Event ShootEmUp::getSDL_Event(){
+	return event;
+}

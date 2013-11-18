@@ -11,9 +11,11 @@ public:
 	void launch();
 	EngineManager* getEngineManager();
 	StateManager* getStateManager();
+	SDL_Event getSDL_Event();
 
 private:
 	EngineManager* engineManager;
 	StateManager* stateManager;
+	SDL_Event event;
 };
 

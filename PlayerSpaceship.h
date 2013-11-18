@@ -8,6 +8,11 @@ class EngineManager;
 class PlayerSpaceShip : public SpaceShip
 {
 public:
+	bool toucheAppuyeeUp;
+	bool toucheAppuyeeDown;
+	bool toucheAppuyeeLeft;
+	bool toucheAppuyeeRight;
+	
 	//Constructeurs
 	PlayerSpaceShip(EngineManager*);
 	

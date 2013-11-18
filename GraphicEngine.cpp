@@ -5,10 +5,9 @@
 GraphicEngine::GraphicEngine(EngineManager* EngineManagerP) {
 	engineManager = EngineManagerP;
     backgroundFirstIteration = true;
-    width = 920; height = 640;
+    width = 800; height = 600;
     SDL_Init(SDL_INIT_VIDEO);
 	screen = SDL_SetVideoMode(width, height, 32, SDL_HWSURFACE);
-
     //int flags = IMG_INIT_JPG|IMG_INIT_PNG;
     //int initted = IMG_Init(flags);
     //if((initted&flags) != flags){
@@ -37,7 +36,7 @@ void GraphicEngine::displayImage(SDL_Surface* image, int x, int y) {
 }
 
 void GraphicEngine::addObject(DisplayObject* displayObject) {
-	displayObjectList.push_front(displayObject);
+	displayObjectList.push_back(displayObject);
 }
 
 void GraphicEngine::removeObject(DisplayObject* displayObject) {

@@ -1,47 +1,27 @@
 #include "InputEngine.h"
-#include "SDL.h"
 #include <iostream>
+#include "EngineManager.h"
+#include "ShootEmUp.h"
+
+//class ShootEmUp;
 
 InputEngine::InputEngine(void)
 {
 	display = true;
-	toucheAppuyeeUp = false;
-	toucheAppuyeeDown = false;
-	toucheAppuyeeLeft = false;
-	toucheAppuyeeRight = false;
 	toucheAppuyeeSpaceBar = false;
 }
 
 InputEngine::InputEngine(EngineManager* engineManagerP)
 {
 	display = true;
-	toucheAppuyeeUp = false;
-	toucheAppuyeeDown = false;
-	toucheAppuyeeLeft = false;
-	toucheAppuyeeRight = false;
+
 	toucheAppuyeeSpaceBar = false;
 	engineManager = engineManagerP;
+	
 }
 
 InputEngine::~InputEngine(void)
 {
-}
-
-//Getters
-bool InputEngine::GetToucheAppuyeeUp() {
-	return toucheAppuyeeUp;
-}
-
-bool InputEngine::GetToucheAppuyeeDown() {
-	return toucheAppuyeeDown;
-}
-
-bool InputEngine::GetToucheAppuyeeLeft() {
-	return toucheAppuyeeLeft;
-}
-
-bool InputEngine::GetToucheAppuyeeRight() {
-	return toucheAppuyeeRight;
 }
 
 bool InputEngine::GetToucheAppuyeeSpaceBar() {
@@ -52,24 +32,16 @@ bool InputEngine::GetDisplay() {
 	return display;
 }
 
-//Setters
-void InputEngine::SetToucheAppuyeeUp(bool boolean) {
-	toucheAppuyeeUp = boolean;
+void InputEngine::setDisplay(bool displayArg){
+	display = displayArg;
 }
 
-void InputEngine::SetToucheAppuyeeDown(bool boolean) {
-	toucheAppuyeeDown = boolean;
-}
-
-void InputEngine::SetToucheAppuyeeLeft(bool boolean) {
-	toucheAppuyeeLeft = boolean;
-}
-
-void InputEngine::SetToucheAppuyeeRight(bool boolean) {
-	toucheAppuyeeRight = boolean;
+SDL_Event InputEngine::getSDL_Event(){
+	return engineManager->getShootEmUp()->getSDL_Event();
 }
 
 void InputEngine::process() {
+	SDL_Event event = engineManager->getShootEmUp()->getSDL_Event();
 	//s'il y a des evenements en attente, on les gere
 	while (SDL_PollEvent(&event))
 	{
@@ -77,33 +49,18 @@ void InputEngine::process() {
 		if (event.type == SDL_QUIT)
 			display = false;
 		// si l'utilisateur a appuye sur une touche...
-		if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
-		{
-			/* switch pour savoir quelle touche est appuyée */
-			switch (event.key.keysym.sym)
-			{
-				case SDLK_q :
-					display = false;
-					break;
-
-				case SDLK_UP :
-					toucheAppuyeeUp = event.type == SDL_KEYDOWN;
-					break;
-				case SDLK_DOWN :
-					toucheAppuyeeDown = event.type == SDL_KEYDOWN;
-					break;
-				case SDLK_LEFT :
-					toucheAppuyeeLeft = event.type == SDL_KEYDOWN;
-					break;
-				case SDLK_RIGHT :
-					toucheAppuyeeRight = event.type == SDL_KEYDOWN;
-					break;
-				case SDLK_SPACE :
-					toucheAppuyeeSpaceBar = event.type == SDL_KEYDOWN;
-				default :
-					printf("Unhandled key\n");
-			}
+		if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) { //|| event2.type == SDL_KEYUP
+            for (list<InputObject*>::iterator it = inputObjectList.begin(); it != inputObjectList.end(); it++) {
+		        (*it)->process(event);// CEST LE PROCESS de l interface InputObject
+	        }
 		}
 	}
 }
 
+void InputEngine::addInputObject(InputObject* inputObject){
+	inputObjectList.push_front(inputObject);
+}
+
+void InputEngine::removeInputObject(InputObject* inputObject){
+	inputObjectList.remove(inputObject);
+}

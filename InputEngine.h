@@ -1,6 +1,8 @@
 #pragma once
 #include "SDL.h"
 #include "Engine.h"
+#include "InputObject.h"
+#include <list>
 
 using namespace std;
 
@@ -8,31 +10,25 @@ class EngineManager;
 
 class InputEngine : public Engine
 {
+
 	bool display;
-	SDL_Event event;
-	bool toucheAppuyeeUp;
-	bool toucheAppuyeeDown;
-	bool toucheAppuyeeLeft;
-	bool toucheAppuyeeRight;
+	//SDL_Event event;
 	bool toucheAppuyeeSpaceBar;
 	EngineManager* engineManager;
+	std::list<InputObject*>inputObjectList;
 public:
 	InputEngine(void);
 	InputEngine(EngineManager*);
 	~InputEngine(void);
 	
-	bool GetToucheAppuyeeUp();
-	bool GetToucheAppuyeeDown();
-	bool GetToucheAppuyeeLeft();
-	bool GetToucheAppuyeeRight();
 	bool GetToucheAppuyeeSpaceBar();
 	bool GetDisplay();
+	void setDisplay(bool);
+	SDL_Event getSDL_Event();
+
+	void addInputObject(InputObject*);
+    void removeInputObject(InputObject*);
 
 	void process();
-
-	void SetToucheAppuyeeUp(bool);
-	void SetToucheAppuyeeDown(bool);
-	void SetToucheAppuyeeLeft(bool);
-	void SetToucheAppuyeeRight(bool);
 };
 

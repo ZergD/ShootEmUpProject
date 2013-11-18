@@ -25,7 +25,7 @@ void PlayerSpaceShip::display() {
 void PlayerSpaceShip::compute() {
 	int vitesse = 15;
 
-	if(engineManager->GetInputEngine()->GetToucheAppuyeeUp()) {
+/*	if(engineManager->GetInputEngine()->GetToucheAppuyeeUp()) {
 		this->setPositionY(-vitesse);
 	}
 	if(engineManager->GetInputEngine()->GetToucheAppuyeeDown()) {
@@ -36,7 +36,7 @@ void PlayerSpaceShip::compute() {
 	}
 	if(engineManager->GetInputEngine()->GetToucheAppuyeeRight()) {
 		this->setPositionX(vitesse);
-	}
+	}*/
 	/*if(engineManager->GetInputEngine()->GetToucheAppuyeeSpaceBar() && youCanShoot()) {
 		new Shot(engineManager, positionX + 10, positionY - 45);
 		new Shot(engineManager, positionX - 10, positionY - 45);

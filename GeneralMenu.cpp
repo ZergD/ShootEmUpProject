@@ -10,10 +10,10 @@ GeneralMenu::~GeneralMenu(){
 
 void GeneralMenu::start() {
     image = new Image(shootEmUp->getEngineManager(), img);
-    //curseur_GM = new CurseurGeneralMenu(shootEmUp->getEngineManager());
+    curseur_GM = new CurseurGeneralMenu(shootEmUp->getEngineManager());
 }
 
 void GeneralMenu::stop() {
-    //delete curseur_GM;
+    delete curseur_GM;
     delete image;
-}
+} 
