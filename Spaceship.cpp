@@ -4,9 +4,10 @@
 SpaceShip::SpaceShip(EngineManager* engineManagerP) {
     engineManager = engineManagerP;
     time(&lastShootTime);
-	positionX = engineManager->GetGraphicEngine()->getWidth() / 2;
+	positionX = (engineManager->GetGraphicEngine()->getWidth() / 2) - 200;
 	positionY = engineManager->GetGraphicEngine()->getHeight() / 2;
-    image = NULL;
+	
+	image = NULL;
     engineManager->GetGraphicEngine()->addObject(this);
 	engineManager->GetStateEngine()->addComputeObject(this);
 }

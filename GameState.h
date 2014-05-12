@@ -13,8 +13,10 @@ public:
     void stop();
     //CloseApplicationObject* cao;
 
-private:
-
+public:
+	SDL_Surface* background;
+	Image * image;
+	PlayerSpaceShip* playerSpaceShip;
     //Token * token;
     //SDL_Surface *tkn; // sdl surface pour le token
     //Grid * grid;

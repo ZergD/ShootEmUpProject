@@ -1,5 +1,6 @@
 #include "StateManager.h"
 #include "GeneralMenu.h"
+#include "GameState.h"
 
 StateManager::StateManager(void)
 {
@@ -8,8 +9,11 @@ StateManager::StateManager(void)
 StateManager::StateManager(ShootEmUp* shootEmUpP){
 	shootEmUp = shootEmUpP;
 	currentType = StateType::NONE;
+	//nextType = StateType::GAME_MODE0;
 	nextType = StateType::GENERAL_MENU;
 	states.insert(std::pair<StateType, State*>(GENERAL_MENU, new GeneralMenu(shootEmUp)));
+	states.insert(std::pair<StateType, State*>(GAME_MODE0, new GameState(shootEmUp, 0)));
+	
 }
 
 StateManager::~StateManager(void)

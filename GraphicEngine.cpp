@@ -5,7 +5,7 @@
 GraphicEngine::GraphicEngine(EngineManager* EngineManagerP) {
 	engineManager = EngineManagerP;
     backgroundFirstIteration = true;
-    width = 800; height = 600;
+    width = 960; height = 720;
     SDL_Init(SDL_INIT_VIDEO);
 	screen = SDL_SetVideoMode(width, height, 32, SDL_HWSURFACE);
     //int flags = IMG_INIT_JPG|IMG_INIT_PNG;

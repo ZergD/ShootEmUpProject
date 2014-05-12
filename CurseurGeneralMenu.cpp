@@ -4,9 +4,9 @@
 #include "StateManager.h"
 
 CurseurGeneralMenu::CurseurGeneralMenu(EngineManager* engineManagerP) : Curseur(engineManagerP){
-    positionX = 60; positionY = 100;
+    positionX = 60; positionY = 500;
     pas = 50;
-    image3 = SDL_LoadBMP("Images/curseurgoku.bmp");
+    image3 = SDL_LoadBMP("Images/AS_cursor_small.bmp");
     SDL_SetColorKey(image3, SDL_SRCCOLORKEY, SDL_MapRGB(image3->format, 0, 0, 255)); //on gere la transparence du curseur
     //le curseur a le fond de son image colorier en bleu 0, 0, 255. Cette fonction rend le bleu invisible
 }

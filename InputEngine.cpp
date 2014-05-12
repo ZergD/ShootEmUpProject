@@ -49,11 +49,11 @@ void InputEngine::process() {
 		if (event.type == SDL_QUIT)
 			display = false;
 		// si l'utilisateur a appuye sur une touche...
-		if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) { //|| event2.type == SDL_KEYUP
+		//if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) { //|| event2.type == SDL_KEYUP
             for (list<InputObject*>::iterator it = inputObjectList.begin(); it != inputObjectList.end(); it++) {
 		        (*it)->process(event);// CEST LE PROCESS de l interface InputObject
 	        }
-		}
+		//}
 	}
 }
 

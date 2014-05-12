@@ -45,13 +45,17 @@ void Curseur::process(SDL_Event event) {
     {
         case SDLK_LEFT :
         moveCursorLeft = event.type == SDL_KEYDOWN;
-                break;
+				break;
         case SDLK_RIGHT :
         moveCursorRight = event.type == SDL_KEYDOWN;
                 break;
         case SDLK_UP :
-            moveCursorUp = event.type == SDL_KEYDOWN;
-            break;
+            //moveCursorUp = event.type == SDL_KEYDOWN;
+            if(event.type == SDL_KEYDOWN)  
+				moveCursorUp = true;
+			else
+				moveCursorUp = false;
+			break;
         case SDLK_DOWN :
             moveCursorDown = event.type == SDL_KEYDOWN;
             break;
@@ -64,7 +68,6 @@ void Curseur::process(SDL_Event event) {
         case SDLK_BACKSPACE :
             pressEscape = event.type == SDL_KEYDOWN;
             break;
-
     }
 }
 
