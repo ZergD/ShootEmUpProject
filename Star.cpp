@@ -2,6 +2,7 @@
 
 #include "Star.h"
 #include "EngineManager.h"
+#include "time.h"
 
 Star::Star(int X, int Y) {
 	positionX = X;
@@ -14,7 +15,7 @@ Star::Star(void){
 	positionY = engineManager->GetGraphicEngine()->getHeight() / 2;
 }
 
-Star::Star(EngineManager* engineManagerP) {	
+Star::Star(EngineManager* engineManagerP) {
 	engineManager = engineManagerP;
 	//positionY = -(rand() % HEIGHT + 1);
 	positionY = 1;
@@ -25,10 +26,10 @@ Star::Star(EngineManager* engineManagerP) {
 
 Star::Star(EngineManager* engineManagerP, int X, int Y) {
 	engineManager = engineManagerP;
-	random = *new boost::random::mt19937(std::time(0));
+	random = *new boost::random::mt19937(time(0));
 	generatorSize1 = *new boost::random::uniform_int_distribution<>(0, 11);
 	generatorSize2 = *new boost::random::uniform_int_distribution<>(0, 5);
-	 
+
 	size = X % 12;
 	lifespan = X % 50;
 	//std::cout << "my lifespan is: " << lifespan << "\n";
@@ -48,7 +49,7 @@ Star::Star(EngineManager* engineManagerP, int X, int Y) {
 }
 
 Star::~Star(void){
-	
+
 	engineManager->GetStateEngine()->removeComputeObject(this);
 	engineManager->GetParticleEngine()->removeStar(this);
 	engineManager->GetGraphicEngine()->removeObject(this);
@@ -75,13 +76,13 @@ void Star::display() {
 
 void Star::compute() {
 	int vitesse;
-	
+
 	//twinkling
 	if(starType == 0) { //cas ou l etoile est grande
 		size = generatorSize1(random);
 		vitesse = 2;
-		this->setPositionY(vitesse);		
-	} 
+		this->setPositionY(vitesse);
+	}
 	else { //cas ou l etoile est petite
 		size = generatorSize2(random);
 		vitesse = 1;
@@ -103,12 +104,12 @@ int Star::getPositionY() {
 
 void Star::setPositionX(int vitesse) {
 	if((positionX + vitesse + 25) > engineManager->GetGraphicEngine()->getWidth() || (positionX + vitesse - 25) < 0) {
-	
+
 	}
 	else {
 		positionX += vitesse;
 	}
-} 
+}
 
 void Star::setPositionY(int vitesse) {
 	if(positionY > engineManager->GetGraphicEngine()->getHeight())  {

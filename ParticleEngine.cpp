@@ -1,10 +1,11 @@
 #include "ParticleEngine.h"
 #include "EngineManager.h"
+#include "time.h"
 
 using namespace std;
 
 ParticleEngine::ParticleEngine(void) {
-    
+
 }
 
 
@@ -14,7 +15,7 @@ ParticleEngine::~ParticleEngine(void)
 }
 
 ParticleEngine::ParticleEngine(EngineManager* engineManagerP) {
-    random = *new boost::random::mt19937(std::time(0));
+    random = *new boost::random::mt19937(time(0));
 	engineManager = engineManagerP;
 
 	amountOfStars = 50;
@@ -23,14 +24,14 @@ ParticleEngine::ParticleEngine(EngineManager* engineManagerP) {
 }
 
 void ParticleEngine::process() {
-	int positionX, positionY; 
+	int positionX, positionY;
 
 	while(starList.size() < amountOfStars) {
 		positionX = generatorX(random);
 		positionY = generatorY(random);
 		//cout << "la positionX est: " << positionX << " et la positionY est: " << positionY << endl;
 		//new Star(engineManager, positionX, positionY);
-	
+
     }
 }
 

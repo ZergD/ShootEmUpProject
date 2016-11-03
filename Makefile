@@ -60,7 +60,7 @@
 MY_CFLAGS = `sdl-config --cflags`
 
 # The linker options.
-MY_LIBS   = `sdl-config --libs` -l:libboost_system.so.1.49.0 -l:libboost_thread.so.1.49.0
+MY_LIBS   = `sdl-config --libs` -lSDL_image -l:libboost_system.so.1.61.0 -l:libboost_thread.so.1.61.0
 
 # The pre-processor options used by the cpp (man cpp for more).
 CPPFLAGS  = -Wall
